@@ -6,7 +6,7 @@ Component({
   properties: {
     title: String,
     first: Boolean,
-    latest: Boolean
+    last: Boolean
   },
 
   /**
@@ -24,12 +24,14 @@ Component({
    */
   methods: {
     onLeft (event) {
-      if (!this.properties.latest) {
+      if (!this.properties.first) {
         this.triggerEvent('left')
       }
     },
     onRight (event) {
-      if (!this.properties.first) {
+      console.log('right', this.properties.last)
+      if (!this.properties.last) {
+        console.log('rt')
         this.triggerEvent('right')
       }
     }

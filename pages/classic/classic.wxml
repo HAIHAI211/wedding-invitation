@@ -1,11 +1,27 @@
+<wxs module="m1">
+  var isFirst = function(currentIndex) {
+    console.log('isFirst', currentIndex === 0)
+    return currentIndex === 0
+  }
+  var isLast = function(currentIndex, max) {
+    console.log('isLast', currentIndex === max)
+    return currentIndex === max
+  }
+
+  module.exports.isFirst = isFirst
+  module.exports.isLast = isLast
+</wxs>
 <view class="container">
     <view class="header">
-        <h-date class="date" index="{{classicData.index}}"/>
+        <h-date 
+        class="date" 
+        index="{{classicArr[index].index}}" 
+        year="{{classicArr[index].year}}" month="{{classicArr[index].month}}"/>
         <h-like class="like" bind:like="onLike"  like="{{likeStatus}}" count="{{likeCount}}"/>
     </view>
-    <h-movie img="{{classicData.image}}" content="{{classicData.content}}"/>
+    <h-movie img="{{classicArr[index].image}}" content="{{classicArr[index].content}}"/>
     <h-navi class="navi"
-    title="{{classicData.title}}"
-    first="{{first}}"
-    latest="{{latest}}" bind:left="onNext" bind:right="onPrevious"/>
+    title="{{classicArr[index].title}}"
+    first="{{m1.isFirst(index)}}"
+    last="{{m1.isLast(index, classicArr.length-1)}}" bind:left="onPrevious" bind:right="onNext"/>
 </view>

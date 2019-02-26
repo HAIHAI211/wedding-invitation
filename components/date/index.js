@@ -8,6 +8,12 @@ Component({
       type: Number,
       observer: function (newV, oldV) { //  等同于vue的watch
       }
+    },
+    year: {
+      type: Number
+    },
+    month: {
+      type: Number
     }
   },
 
@@ -17,21 +23,19 @@ Component({
    * 组件的初始数据
    */
   data: {
-    year: 0,
-    month: ''
   },
 
   /**
    * 加入到页面树
    */
   attached: function () {
-    let date = new Date()
-    let year = date.getFullYear()
-    let month = date.getMonth()
-    this.setData({
-      year,
-      month
-    })
+    // let date = new Date()
+    // let year = date.getFullYear()
+    // let month = date.getMonth()
+    // this.setData({
+    //   year,
+    //   month
+    // })
   },
   /**
    * 组件的方法列表

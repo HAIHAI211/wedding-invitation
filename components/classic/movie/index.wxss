@@ -6,7 +6,7 @@
 
 .classic-img{
   width: 750rpx;
-  height: 500rpx;
+  height: 516rpx;
 }
 
 .tag{
