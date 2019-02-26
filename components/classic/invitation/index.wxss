@@ -1,0 +1,40 @@
+.classic-container.invitation-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.classic-img{
+    width: 750rpx;
+    height: 573rpx;
+}
+.join-btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 255rpx;
+    width: 120rpx;
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    background: lightblue;
+}
+
+.tag{
+    /*width: 88rpx;*/
+    /*height: 286rpx;*/
+    width: 52.8rpx;
+    height: 171.6rpx;
+    position: relative;
+    left: -310rpx;
+    top: -70rpx;
+}
+
+.content{
+    font-size: 36rpx;
+    max-width: 550rpx;
+}
