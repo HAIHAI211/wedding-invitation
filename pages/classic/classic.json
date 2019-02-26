@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "h-like": "/components/like/index",
+    "h-movie": "/components/classic/movie/index",
+    "h-date": "/components/date/index",
+    "h-navi": "/components/navi/index"
+  }
+}
