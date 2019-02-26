@@ -1,0 +1,40 @@
+.container{
+    display: inline-flex;
+    height: 60rpx;
+}
+
+.index-container{
+    display: flex;
+    align-items: baseline;
+}
+
+.index-container .plain{
+    font-size: 32rpx;
+    line-height: 32rpx;
+}
+.index-container .index{
+    font-size: 60rpx;
+    line-height: 60rpx;
+    font-weight: 800;
+}
+.index-container .line{
+    height: 44rpx;
+    margin: 0 14rpx;
+    border-left: 1px solid black;
+}
+
+.date-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 7rpx 0;
+}
+
+.date-container .month{
+    font-size: 24rpx;
+    line-height: 24rpx;
+}
+.date-container .year{
+    font-size: 20rpx;
+    line-height: 20rpx;
+}

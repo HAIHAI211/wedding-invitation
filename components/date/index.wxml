@@ -1,0 +1,25 @@
+<wxs module="m1">
+  var addZero = function(num) {
+    return num > 10 ? num : '0' + num
+  }
+
+  var getChineseMonth = function(month) { // month为从0开始
+    var cmonths = ['一月', '二月', '三月',
+    '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+    return cmonths[month]
+  }
+
+  module.exports.addZero = addZero
+  module.exports.getChineseMonth = getChineseMonth
+</wxs>
+<view class="container">
+  <view class="index-container">
+    <text class="plain">No.</text>
+    <text class="index">{{ m1.addZero(index) }}</text>
+    <view class="line"/>
+  </view>
+  <view class="date-container">
+    <text class="month">{{ m1.getChineseMonth(month) }}</text>
+    <text class="year">{{ year }}</text>
+  </view>
+</view>

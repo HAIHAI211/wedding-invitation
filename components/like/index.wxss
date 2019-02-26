@@ -1,0 +1,25 @@
+/* components/like/index.wxss */
+/* >子代选择器也可以用 :first-child也可以用 */
+.container{
+  /* inline-flex在保留flex特性的同时，消除了容器的块状特性，使得容器自适应，
+     但是也存在让页面闪烁的问题
+  */
+  display: inline-flex;
+  flex-direction: row;
+  padding: 10rpx;
+  width: 90rpx;
+}
+.container image{
+  width: 32rpx;
+  height: 28rpx;
+}
+.container text{
+  /* 苹方 思源  */
+  /* PingFangSC只在ios下起作用 */
+  font-size: 24rpx;
+  line-height: 24rpx; /* 消除文字的上下留白 */
+  color: #bbbbbb;
+  position: relative;
+  bottom: 10rpx;
+  left: 6rpx;
+}
