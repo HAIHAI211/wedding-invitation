@@ -6,15 +6,17 @@
 
 .classic-img{
   width: 750rpx;
-  height: 516rpx;
+  height: 522rpx;
 }
 
 .tag{
-  width: 46rpx;
-  height: 142rpx;
+  /*width: 88rpx;*/
+  /*height: 286rpx;*/
+  width: 52.8rpx;
+  height: 171.6rpx;
   position: relative;
   left: -310rpx;
-  top: -58rpx;
+  top: -70rpx;
 }
 
 .content{

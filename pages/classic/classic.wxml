@@ -13,13 +13,13 @@
 </wxs>
 <view class="container">
     <view class="header">
-        <h-date 
-        class="date" 
-        index="{{classicArr[index].index}}" 
+        <h-date
+        class="date"
+        index="{{classicArr[index].index}}"
         year="{{classicArr[index].year}}" month="{{classicArr[index].month}}"/>
         <h-like class="like" bind:like="onLike"  like="{{likeStatus}}" count="{{likeCount}}"/>
     </view>
-    <h-movie img="{{classicArr[index].image}}" content="{{classicArr[index].content}}"/>
+    <h-movie img="{{classicArr[index].image}}" content="{{classicArr[index].content}}" index="{{index}}"/>
     <h-navi class="navi"
     title="{{classicArr[index].title}}"
     first="{{m1.isFirst(index)}}"

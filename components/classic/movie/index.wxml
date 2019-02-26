@@ -1,5 +1,11 @@
+<wxs module="m1">
+  var getSrc = function(currentIndex) {
+    return './images/'+ (currentIndex+1) +'.png'
+  }
+  module.exports.getSrc = getSrc
+</wxs>
 <view class="classic-container">
   <image class="classic-img" src="{{img}}"/>
-  <image class="tag" src="./images/tag@2x.png"/>
+  <image class="tag" src="{{m1.getSrc(index)}}"/>
   <text class="content">{{content}}</text>
 </view>
