@@ -15,7 +15,12 @@
     <h-movie img="{{image}}" content="{{content}}" index="{{index}}"/>
 </template>
 <template name="invitation">
-    <h-invi content="{{content}}"/>
+    <h-invi content="{{content}}"
+            time="{{time}}"
+            nongTime="{{nong_time}}"
+            hotel="{{hotel}}"
+            hotelRoom="{{hotel_room}}"
+            index="{{index}}"/>
 </template>
 
 <view class="container">

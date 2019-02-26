@@ -1,12 +1,21 @@
 <wxs module="m1">
     var getSrc = function(currentIndex) {
-    return './images/'+ (currentIndex+1) +'.png'
+    return './images/'+ (currentIndex) +'.png'
     }
     module.exports.getSrc = getSrc
 </wxs>
 <view class="classic-container invitation-container">
-    <image class="classic-img" src="./images/my@bg.png"/>
+    <image class="classic-img" src="{{m1.getSrc(index)}}"/>
     <button class="join-btn">回复</button>
-
+    <view class="info-container">
+        <view class="info address-info">
+            <text class="hotel-name">{{hotel}}</text>
+            <text class="hotel-room">{{hotelRoom}}</text>
+        </view>
+        <view class="info time-info">
+            <text class="west-time">{{time}}</text>
+            <text class="nong-time">{{nongTime}}</text>
+        </view>
+    </view>
     <text class="content">{{content}}</text>
 </view>

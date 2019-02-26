@@ -6,6 +6,10 @@ Component({
      */
     behaviors: [classicBeh],
     properties: {
+        time: String,
+        nongTime: String,
+        hotel: String,
+        hotelRoom: String
     },
 
     /**

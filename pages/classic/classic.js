@@ -45,6 +45,7 @@ Page({
    */
   onLoad: function (options) {
     classicCollection.get().then(res => {
+      console.log(res.data)
       this.setData({
           classicArr: res.data
       })

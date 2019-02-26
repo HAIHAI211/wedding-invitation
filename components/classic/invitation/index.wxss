@@ -20,8 +20,28 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 15px;
     background: lightblue;
+}
+.info-container{
+    position: absolute;
+    top: 450rpx;
+    width: 750rpx;
+    display: flex;
+}
+.info{
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.address-info{
+    font-size: 13px;
+    color: #333;
+}
+.time-info{
+    font-size: 13px;
+    color: #333;
 }
 
 .tag{
@@ -35,6 +55,7 @@
 }
 
 .content{
+    margin-top: 100rpx;
     font-size: 36rpx;
     max-width: 550rpx;
 }
