@@ -10,6 +10,7 @@ Page({
    */
   data: {
     success: false,
+    successContent: '回复已提交',
     loading: false,
     countInputDisabled: false,
     flag: 'BAOYING', // 是宝应的还是成都
