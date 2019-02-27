@@ -1,3 +1,5 @@
+import {share} from '../../utils/share.js'
+
 const app = getApp();
 const db = app.globalData.db
 const guestCollection = app.globalData.guestCollection
@@ -73,7 +75,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-        success: true,
+        success: false,
         flag: options.flag
     })
     wx.setNavigationBarTitle({
@@ -127,7 +129,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+      return share(res)
   }
 })

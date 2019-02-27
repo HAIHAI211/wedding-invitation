@@ -1,5 +1,6 @@
 import {ClassicModel} from '../../models/classic.js'
 import {LikeModel} from '../../models/like.js'
+import {share} from '../../utils/share.js'
 let classicModel = new ClassicModel()
 let likeModel = new LikeModel()
 const app = getApp();
@@ -106,7 +107,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    return share(res)
   }
 })
