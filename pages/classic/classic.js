@@ -14,7 +14,16 @@ Page({
     likeCount: 0,
     likeStatus: false,
     index: 0,
-    classicArr: []
+    classicArr: [
+        {
+          type: 'photo',
+          year: 0,
+          month: 0,
+          title: '',
+          content: '',
+          index: 1
+        }
+    ]
   },
 
   onLike: function (event) {

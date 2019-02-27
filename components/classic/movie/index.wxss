@@ -12,11 +12,11 @@
 .tag{
   /*width: 88rpx;*/
   /*height: 286rpx;*/
-  width: 52.8rpx;
-  height: 171.6rpx;
+  width: 61.6rpx;
+  height: 200.2rpx;
   position: relative;
   left: -310rpx;
-  top: -70rpx;
+  top: -90rpx;
 }
 
 .content{

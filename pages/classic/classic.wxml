@@ -11,17 +11,6 @@
   module.exports.isFirst = isFirst
   module.exports.isLast = isLast
 </wxs>
-<template name="photo">
-    <h-movie img="{{image}}" content="{{content}}" index="{{index}}"/>
-</template>
-<template name="invitation">
-    <h-invi content="{{content}}"
-            time="{{time}}"
-            nongTime="{{nong_time}}"
-            hotel="{{hotel}}"
-            hotelRoom="{{hotel_room}}"
-            index="{{index}}"/>
-</template>
 
 <view class="container">
     <view class="header">
@@ -31,7 +20,17 @@
         year="{{classicArr[index].year}}" month="{{classicArr[index].month}}"/>
         <h-like class="like" bind:like="onLike"  like="{{likeStatus}}" count="{{likeCount}}"/>
     </view>
-    <template is="{{classicArr[index].type === 'invitation' ? 'invitation' : 'photo'}}" data="{{...classicArr[index]}}"/>
+    <h-movie img="{{classicArr[index].image}}"
+             content="{{classicArr[index].content}}"
+             index="{{classicArr[index].index}}"
+             wx:if="{{classicArr[index].type === 'photo'}}"/>
+    <h-invi content="{{classicArr[index].content}}"
+            time="{{classicArr[index].time}}"
+            nongTime="{{classicArr[index].nong_time}}"
+            hotel="{{classicArr[index].hotel}}"
+            hotelRoom="{{classicArr[index].hotel_room}}"
+            index="{{classicArr[index].index}}"
+            wx:elif="{{classicArr[index].type === 'invitation'}}"/>
     <h-navi class="navi"
     title="{{classicArr[index].title}}"
     first="{{m1.isFirst(index)}}"

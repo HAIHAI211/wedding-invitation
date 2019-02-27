@@ -1,6 +1,6 @@
 <wxs module="m1">
   var getSrc = function(currentIndex) {
-    return './images/'+ (currentIndex+1) +'.png'
+    return './images/'+ (currentIndex) +'.png'
   }
   module.exports.getSrc = getSrc
 </wxs>
