@@ -2,3 +2,58 @@ page{
     height: 100%;
     background: #FAFBFF;
 }
+.msg{
+    width: 750rpx;
+    height: 400rpx;
+    box-sizing: border-box;
+    padding-left: 35rpx;
+    padding-top: 35rpx;
+    /*border-top: 1px solid #D5D4D9;*/
+    /*border-bottom: 1px solid #D5D4D9;*/
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,40,0.1), 0 2px 40px 1px rgba(0,0,60,0.2);
+}
+.msg-ph{
+    color: #828282;
+    font-size: 17px;
+    letter-spacing: 1rpx;
+}
+.submit-btn{
+    position: absolute;
+    bottom: 70rpx;
+    left: 0;
+    right: 0;
+    color: #fff;
+    width: 660rpx;
+    height: 100rpx;
+    background: #A6ACBC;
+}
+.form-item-container{
+    display: flex;
+    align-items: center;
+    padding: 32rpx 35rpx;
+}
+.border{
+    border-bottom: 1px solid #E4E3E8;
+}
+.label{
+    font-size: 16px;
+    margin-right: 28rpx;
+    font-weight: 600;
+}
+.pholder{
+    font-size: 14px;
+    color: #BCBDC1;
+    letter-spacing: 1rpx;
+}
+.value{
+
+}
+.radio-group{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+.radio{
+    font-size: 14px;
+}

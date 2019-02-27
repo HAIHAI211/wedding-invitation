@@ -2,7 +2,8 @@ import {config} from './config'
 App({
     globalData: { // 全局变量
         db: null,
-        classicCollection: null
+        classicCollection: null,
+        guestCollection: null
     },
     onLaunch: function(){
         wx.cloud.init({ // 初始化云服务
@@ -12,5 +13,6 @@ App({
         const db = wx.cloud.database()
         this.globalData.db = db
         this.globalData.classicCollection = db.collection(config.classicCollection)
+        this.globalData.guestCollection = db.collection(config.guestCollection)
     }
 })

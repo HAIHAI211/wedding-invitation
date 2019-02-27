@@ -20,6 +20,10 @@ Component({
         checked: false
       }]
     },
+    border: {
+      type: Boolean,
+      value: true
+    },
     must: Boolean,
     label: String,
     name: String,

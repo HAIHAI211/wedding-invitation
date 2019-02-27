@@ -1,8 +1,10 @@
 .form-item-container{
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #E4E3E8;
     padding: 32rpx 35rpx;
+}
+.border{
+    border-bottom: 1px solid #E4E3E8;
 }
 .label{
     font-size: 16px;

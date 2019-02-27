@@ -24,8 +24,9 @@ Component({
      */
     methods: {
         onAnswer () {
+            let flag = this.properties.index === 5 ? 'BAO_YING' : 'CHENG_DU'
             wx.navigateTo({
-                url: '/pages/answer/answer'
+                url: `/pages/answer/answer?flag=${flag}`
             })
         }
     }
