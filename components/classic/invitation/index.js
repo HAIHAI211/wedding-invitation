@@ -23,6 +23,10 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        onAnswer () {
+            wx.navigateTo({
+                url: '/pages/answer/answer'
+            })
+        }
     }
 })

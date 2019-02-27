@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/classic/classic"
+    "pages/classic/classic",
+    "pages/answer/answer"
   ],
-  "window":{
+  "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "孙正&翟彬的婚礼",
     "navigationBarTextStyle": "black",
