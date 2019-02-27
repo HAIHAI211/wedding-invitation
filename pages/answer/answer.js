@@ -62,13 +62,18 @@ Page({
       })
     })
   },
+  onBack () {
+      wx.navigateBack({
+          delta: 1
+      })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-        success: false,
+        success: true,
         flag: options.flag
     })
     wx.setNavigationBarTitle({

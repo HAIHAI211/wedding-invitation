@@ -18,16 +18,32 @@ page{
     font-size: 17px;
     letter-spacing: 1rpx;
 }
-.submit-btn{
-    position: absolute;
-    bottom: 70rpx;
-    left: 0;
-    right: 0;
+.btn{
     color: #fff;
     width: 660rpx;
     height: 100rpx;
     background: #A6ACBC;
 }
+.submit-btn{
+    position: absolute;
+    bottom: 70rpx;
+    left: 0;
+    right: 0;
+}
+.back-btn{
+    position: absolute;
+    bottom: 200rpx;
+    left: 0;
+    right: 0;
+}
+.url-btn{
+    background: #2B7D19;
+    position: absolute;
+    bottom: 70rpx;
+    left: 0;
+    right: 0;
+}
+
 .form-item-container{
     display: flex;
     align-items: center;
