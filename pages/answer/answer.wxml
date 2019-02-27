@@ -4,27 +4,31 @@
     }
     module.exports.isDisabled = isDisabled
 </wxs>
-<form class="answer-container" bind:submit="onSubmit">
-    <view class="form-item-container border">
-        <view class="label">您的姓名:</view>
-        <input class="value" placeholder-class="pholder" name="name" placeholder="(必填) 请输入您的姓名"/>
-    </view>
-    <view class="form-item-container border">
-        <view class="label">是否赴宴:</view>
-        <radio-group class="radio-group"  name="come"  bind:change="radioChange">
-            <label class="radio" wx:for="{{items}}" wx:key="item.value">
-                <radio value="{{item.value}}" checked="{{item.checked}}" color="#e0e0e0"/>
-                {{item.name}}
-            </label>
-        </radio-group>
-    </view>
-    <view class="form-item-container">
-        <view class="label">赴宴人数:</view>
-        <input class="value" placeholder-class="pholder" name="count" type="number" placeholder="(必填) 请输入赴宴人数" disabled="{{countInputDisabled}}" value="{{count}}"/>
-    </view>
-    <!--<h-item type="input" name="name" label="您的姓名" placeholder="请输入您的姓名" must="{{true}}"/>-->
-    <!--<h-item type="radio" name="come" label="是否赴宴" items="{{items}}"/>-->
-    <!--<h-item type="input" name="count" label="赴宴人数" intype="number" placeholder="请输入赴宴人数" must="{{true}}" border="{{false}}"/>-->
-    <textarea class="msg" name="msg" placeholder="轻触此处输入留言" placeholder-class="msg-ph"/>
-    <button form-type="submit" class="submit-btn" loading="{{loading}}">提交回复</button>
-</form>
+<view class="answer-container">
+    <form bind:submit="onSubmit" wx:if="{{!success}}">
+        <view class="form-item-container border">
+            <view class="label">您的姓名:</view>
+            <input class="value" placeholder-class="pholder" name="name" placeholder="(必填) 请输入您的姓名"/>
+        </view>
+        <view class="form-item-container border">
+            <view class="label">是否赴宴:</view>
+            <radio-group class="radio-group"  name="come"  bind:change="radioChange">
+                <label class="radio" wx:for="{{items}}" wx:key="item.value">
+                    <radio value="{{item.value}}" checked="{{item.checked}}" color="#e0e0e0"/>
+                    {{item.name}}
+                </label>
+            </radio-group>
+        </view>
+        <view class="form-item-container">
+            <view class="label">赴宴人数:</view>
+            <input class="value" placeholder-class="pholder" name="count" type="number" placeholder="(必填) 请输入赴宴人数" disabled="{{countInputDisabled}}" value="{{count}}"/>
+        </view>
+        <!--<h-item type="input" name="name" label="您的姓名" placeholder="请输入您的姓名" must="{{true}}"/>-->
+        <!--<h-item type="radio" name="come" label="是否赴宴" items="{{items}}"/>-->
+        <!--<h-item type="input" name="count" label="赴宴人数" intype="number" placeholder="请输入赴宴人数" must="{{true}}" border="{{false}}"/>-->
+        <textarea class="msg" name="msg" placeholder="轻触此处输入留言" placeholder-class="msg-ph"/>
+        <button form-type="submit" class="submit-btn" loading="{{loading}}">提交回复</button>
+    </form>
+    <h-success content="回复已提交" wx:else class="success"/>
+</view>
+

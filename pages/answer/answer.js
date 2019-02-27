@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    success: false,
     loading: false,
     countInputDisabled: false,
     flag: 'BAOYING', // 是宝应的还是成都
@@ -56,7 +57,8 @@ Page({
     }).then(res => {
       console.log(res)
       this.setData({
-          loading: false
+          loading: false,
+          success: true
       })
     })
   },
@@ -66,6 +68,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
+        success: false,
         flag: options.flag
     })
     wx.setNavigationBarTitle({

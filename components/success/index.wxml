@@ -1,0 +1,4 @@
+<view class="success-container">
+    <image src="./images/success.png" class="icon"/>
+    <text>{{content}}</text>
+</view>

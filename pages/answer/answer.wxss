@@ -57,3 +57,10 @@ page{
 .radio{
     font-size: 14px;
 }
+.answer-container{
+    display: flex;
+    flex-direction: column;
+}
+.success{
+    margin-top: 100rpx;
+}

@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "h-item": "/components/form-item/index"
+    "h-item": "/components/form-item/index",
+    "h-success": "/components/success/index"
   },
   "navigationBarTitleText": "宾客回复",
   "navigationBarBackgroundColor": "#FAFBFF",
