@@ -1,0 +1,27 @@
+.form-item-container{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #E4E3E8;
+    padding: 32rpx 35rpx;
+}
+.label{
+    font-size: 16px;
+    margin-right: 28rpx;
+    font-weight: 600;
+}
+.pholder{
+    font-size: 14px;
+    color: #BCBDC1;
+    letter-spacing: 1rpx;
+}
+.value{
+
+}
+.radio-group{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+.radio{
+    font-size: 14px;
+}

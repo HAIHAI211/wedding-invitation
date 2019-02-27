@@ -1,0 +1,21 @@
+<wxs module="m1">
+    var getPh = function (must, ph) {
+        return must ? '(必填) ' + ph : '(选填) ' + ph
+    }
+    module.exports.getPh = getPh
+</wxs>
+<view class="form-item-container">
+    <view class="label">{{label}}:</view>
+    <input class="value"
+           placeholder-class="pholder"
+           name="{{name}}"
+           type="{{intype}}"
+           placeholder="{{m1.getPh(must, placeholder)}}"
+           wx:if="{{type==='input'}}"/>
+    <radio-group class="radio-group"  name="{{name}}"  bind:change="radioChange" wx:elif="{{type==='radio'}}">
+        <label class="radio" wx:for="{{items}}">
+            <radio value="{{item.value}}" checked="{{item.checked}}" color="#e0e0e0"/>
+            {{item.name}}
+        </label>
+    </radio-group>
+</view>

@@ -6,7 +6,7 @@
 </wxs>
 <view class="classic-container invitation-container">
     <image class="classic-img" src="{{m1.getSrc(index)}}"/>
-    <button class="join-btn" bind:tap="onAnswer">回复</button>
+    <button class="{{['join-btn', 'join-btn-'+ index]}}" bind:tap="onAnswer">回复</button>
     <view class="info-container">
         <view class="info address-info">
             <text class="hotel-name">{{hotel}}</text>

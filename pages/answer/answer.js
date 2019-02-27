@@ -5,7 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    items: [
+        {
+          name: '赴宴',
+          value: 'go',
+          checked: true
+        },
+        {
+          name: '待定',
+          value: 'wait',
+          checked: false
+        },
+        {
+          name: '有事',
+          value: 'busy',
+          checked: false
+        }
+    ]
   },
 
   /**

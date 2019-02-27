@@ -1,2 +1,6 @@
-<!--pages/answer/answer.wxml-->
-<text>pages/answer/answer.wxml</text>
+<view class="answer-container">
+    <h-item type="input" name="name" label="您的姓名" placeholder="请输入您的姓名" must="{{true}}"/>
+    <h-item type="radio" label="是否赴宴" items="{{items}}"/>
+    <h-item type="input" intype="number" name="count" label="赴宴人数" placeholder="请输入赴宴人数" must="{{true}}"/>
+
+</view>

@@ -21,7 +21,13 @@
     justify-content: center;
     border-radius: 50%;
     font-size: 15px;
+
+}
+.join-btn-5{
     background: lightblue;
+}
+.join-btn-6{
+    background: lightcoral;
 }
 .info-container{
     position: absolute;
