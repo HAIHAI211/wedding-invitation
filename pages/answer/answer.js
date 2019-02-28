@@ -75,14 +75,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-        success: false,
-        flag: options.flag
-    })
-    wx.setNavigationBarTitle({
-        title: options.flag === 'BAO_YING' ? '宝应婚礼-回复' : '成都回门宴-回复'
-    })
-    console.log('options', options)
+    this._rocoverStatus(options.flag)
   },
 
   /**
@@ -132,5 +125,14 @@ Page({
    */
   onShareAppMessage: function (res) {
       return share(res)
+  },
+  _rocoverStatus (flag) {
+      this.setData({
+          success: false,
+          flag
+      })
+      wx.setNavigationBarTitle({
+          title: flag === 'BAO_YING' ? '宝应婚礼-回复' : '成都回门宴-回复'
+      })
   }
 })

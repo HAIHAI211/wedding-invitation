@@ -30,7 +30,7 @@
             hotel="{{classicArr[index].hotel}}"
             hotelRoom="{{classicArr[index].hotel_room}}"
             index="{{classicArr[index].index}}"
-            wx:elif="{{classicArr[index].type === 'invitation'}}"/>
+            wx:if="{{classicArr[index].type === 'invitation'}}"/>
     <h-navi class="navi"
     title="{{classicArr[index].title}}"
     first="{{m1.isFirst(index)}}"

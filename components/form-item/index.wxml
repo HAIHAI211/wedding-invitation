@@ -4,7 +4,7 @@
     }
     module.exports.getPh = getPh
 </wxs>
-<view class="{{['form-item-container', border ? 'border' : '']}}">
+<view class="form-item-container {{border ? 'border' : ''}}">
     <view class="label">{{label}}:</view>
     <input class="value"
            placeholder-class="pholder"

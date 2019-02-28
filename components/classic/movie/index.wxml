@@ -4,7 +4,7 @@
   }
   module.exports.getSrc = getSrc
 </wxs>
-<view class="classic-container">
+<view class="classic-container" hidden="{{hidden}}">
   <image class="classic-img" src="{{img}}"/>
   <image class="tag" src="{{m1.getSrc(index)}}"/>
   <text class="content">{{content}}</text>
