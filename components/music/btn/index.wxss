@@ -1,0 +1,9 @@
+@import "../../../common/rotation.wxss";
+.container{
+
+}
+image{
+    width: 60rpx;
+    height: 60rpx;
+}
+

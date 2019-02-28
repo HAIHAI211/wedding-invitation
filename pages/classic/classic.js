@@ -1,17 +1,16 @@
-import {ClassicModel} from '../../models/classic.js'
 import {LikeModel} from '../../models/like.js'
 import {share} from '../../utils/share.js'
-let classicModel = new ClassicModel()
 let likeModel = new LikeModel()
 const app = getApp();
-const db = app.globalData.db
 const classicCollection = app.globalData.classicCollection
+const setGlobalData = app.setGlobalData
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    // playing: musicModel.playing,
     likeCount: 0,
     likeStatus: false,
     index: 0,
@@ -47,6 +46,10 @@ Page({
     this.setData({
       index: this.data.index <= min ? min : this.data.index - 1
     })
+  },
+  onTest: function () {
+    console.log('test')
+    setGlobalData('playing', false)
   },
 
 

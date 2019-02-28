@@ -1,18 +1,31 @@
 import {config} from './config'
+import {initCloud} from './utils/global'
 App({
     globalData: { // 全局变量
         db: null,
         classicCollection: null,
-        guestCollection: null
+        guestCollection: null,
+        musicSrc: '',
+        playing: true
+    },
+    callbackMap: {},
+    setGlobalData (key, value) {
+        this.globalData[key] = value
+        let callbackList = this.callbackMap[key]
+        if (callbackList && callbackList.length) {
+            for (let i = 0; i < callbackList.length; i++) {
+                callbackList[i](value)
+            }
+        }
+    },
+    addGlobalDataListener (key, callback) {
+        if (!this.callbackMap[key]) {
+            this.callbackMap[key] = []
+        }
+        let callbackList = this.callbackMap[key]
+        callbackList.push(callback)
     },
     onLaunch: function(){
-        wx.cloud.init({ // 初始化云服务
-            env: 'wedding-47b9fe',
-            traceUser: true
-        })
-        const db = wx.cloud.database()
-        this.globalData.db = db
-        this.globalData.classicCollection = db.collection(config.classicCollection)
-        this.globalData.guestCollection = db.collection(config.guestCollection)
-    }
+        initCloud(this.globalData)
+    },
 })

@@ -4,6 +4,7 @@
     "h-movie": "/components/classic/movie/index",
     "h-invi": "/components/classic/invitation/index",
     "h-date": "/components/date/index",
-    "h-navi": "/components/navi/index"
+    "h-navi": "/components/navi/index",
+    "h-music-btn": "/components/music/btn/index"
   }
 }
