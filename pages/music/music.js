@@ -1,5 +1,6 @@
 import {share} from '../../utils/share'
-const app = getApp();
+const app = getApp()
+let mMgr = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -7,6 +8,7 @@ Page({
    */
   data: {
     playing: false,
+    src: '',
     img: '',
     content: ''
   },
@@ -75,6 +77,13 @@ Page({
    * 更新播放状态
    * */
   _updatePlayingStatus (nextStatus) {
+      // 更新播放器状态
+      if (nextStatus) {
+        mMgr.play()
+      } else {
+        mMgr.pause()
+      }
+
       // 更新组件内的状态
       this.setData({
           playing: nextStatus
@@ -88,6 +97,7 @@ Page({
   _init () {
       this.setData({
           playing: app.globalData.playing,
+          src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/花粥 - 纸短情长.mp3?sign=a5cf71a1ce6cd62e9f4686e60d1d98be&t=1551347173',
           img: './images/music-cover.png',
           content: '你陪我步入蝉夏 越过城市喧嚣'
       })

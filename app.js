@@ -1,10 +1,14 @@
-import {initCloud} from './utils/global'
+import {initCloud, initMusic} from './utils/global'
 App({
     globalData: { // 全局变量
         db: null,
         classicCollection: null,
         guestCollection: null,
-        playing: true
+        musicCollection: null,
+        musicManager: null,
+        playing: true,
+        musicList: [],
+        currentMusicIndex: 0
     },
     callbackMap: {},
     setGlobalData (key, value) {
@@ -25,5 +29,6 @@ App({
     },
     onLaunch: function(){
         initCloud(this.globalData)
-    },
+        initMusic(this.globalData, this.setGlobalData)
+    }
 })
