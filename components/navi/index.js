@@ -29,9 +29,7 @@ Component({
       }
     },
     onRight (event) {
-      console.log('right', this.properties.last)
       if (!this.properties.last) {
-        console.log('rt')
         this.triggerEvent('right')
       }
     }

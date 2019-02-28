@@ -1,10 +1,8 @@
 <wxs module="m1">
   var isFirst = function(currentIndex) {
-    console.log('isFirst', currentIndex === 0)
     return currentIndex === 0
   }
   var isLast = function(currentIndex, max) {
-    console.log('isLast', currentIndex === max)
     return currentIndex === max
   }
 
@@ -15,7 +13,6 @@
 <view class="container">
     <view class="header">
         <h-date
-        bind:tap="onTest"
         class="date"
         index="{{classicArr[index].index}}"
         year="{{classicArr[index].year}}" month="{{classicArr[index].month}}"/>

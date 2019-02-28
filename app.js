@@ -6,12 +6,15 @@ App({
         guestCollection: null,
         musicCollection: null,
         musicManager: null,
-        playing: true,
+        playing: false,
         musicList: [],
         currentMusicIndex: 0
     },
     callbackMap: {},
     setGlobalData (key, value) {
+        if (this.globalData[key] === value) {
+            return
+        }
         this.globalData[key] = value
         let callbackList = this.callbackMap[key]
         if (callbackList && callbackList.length) {

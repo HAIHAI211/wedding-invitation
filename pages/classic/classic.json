@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "h-like": "/components/like/index",
     "h-movie": "/components/classic/movie/index",
     "h-invi": "/components/classic/invitation/index",
     "h-date": "/components/date/index",

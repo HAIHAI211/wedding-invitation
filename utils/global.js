@@ -17,20 +17,29 @@ function initMusic(globalData, setGlobalData, addGlobalDataListener) {
     globalData.currentMusicIndex = 0
     globalData.musicList = [
         {
-            name: '纸短情长',
+            name: '花粥《纸短情长》',
             src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/huazhou.mp3?sign=8bcbbdca6a3e15f4f4ecab7c3e100f7c&t=1551350758',
             img: './images/music-cover.png',
             content: '你陪我步入蝉夏 越过城市喧嚣'
         },
         {
-            name: 'Love Paradise',
-            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/陈慧琳 - Love Paradise.mp3?sign=74853d500455dfba76b39f9c008160ea&t=1551348034',
+            name: 'Janieck Devy《Reality》',
+            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/reality.mp3?sign=696958c92f7a9a0b9f2253cffffbb462&t=1551364090',
             img: '',
-            content: '你的眼中有我的天空海洋 希望生活一直是我们爱的天堂'
+            content: '内心的呼唤 燃烧又熄灭 月光下载歌载舞 这是我们的人生'
+        },
+        {
+            name: 'Sky Sailing《tennis elbow》',
+            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/tenniselbow.mp3?sign=97c0b642019c53c2342e6e2965559daf&t=1551364674',
+            img: '',
+            content: 'Close your eyes And I will twirl you around'
         }
     ]
     console.log('musicList', globalData.musicList)
     globalData.musicManager = wx.getBackgroundAudioManager()
+    globalData.musicManager.onError((err) => { // 真机调试
+        console.log(err)
+    })
     playFirstMusic(globalData)
     addMusicManagerActionListener(globalData, setGlobalData)
     addGlobalDataListener('playing', (v) => {
@@ -43,12 +52,10 @@ function initMusic(globalData, setGlobalData, addGlobalDataListener) {
 }
 
 function playFirstMusic(globalData) {
-    globalData.musicManager.src = globalData.musicList[globalData.currentMusicIndex].src
-    globalData.musicManager.title = globalData.musicList[globalData.currentMusicIndex].name
-
-    globalData.musicManager.onError((err) => { // 真机调试
-        console.log(err)
-    })
+    if (globalData.playing) {
+        globalData.musicManager.src = globalData.musicList[globalData.currentMusicIndex].src
+        globalData.musicManager.title = globalData.musicList[globalData.currentMusicIndex].name
+    }
 }
 function addMusicManagerActionListener(globalData, setGlobalData) {
     globalData.musicManager.onPlay(() => {

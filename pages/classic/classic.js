@@ -1,6 +1,4 @@
-import {LikeModel} from '../../models/like.js'
 import {share} from '../../utils/share.js'
-let likeModel = new LikeModel()
 const app = getApp();
 const classicCollection = app.globalData.classicCollection
 const setGlobalData = app.setGlobalData
@@ -25,15 +23,6 @@ Page({
         }
     ]
   },
-
-  onLike: function (event) {
-    console.log(event)
-    let behavior = event.detail.behavior
-    let id = this.data.classicData._id
-    let category = this.data.classicData.type
-    likeModel.like(behavior, id, category)
-  },
-
   onNext: function () {
     let max = this.data.classicArr.length - 1
     this.setData({
@@ -46,10 +35,6 @@ Page({
     this.setData({
       index: this.data.index <= min ? min : this.data.index - 1
     })
-  },
-  onTest: function () {
-    console.log('test')
-    setGlobalData('playing', false)
   },
   onMusicBtnTap () {
     wx.navigateTo({
