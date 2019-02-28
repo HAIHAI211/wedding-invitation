@@ -18,7 +18,7 @@ function initMusic(globalData, setGlobalData) {
     globalData.musicList = [
         {
             name: '纸短情长',
-            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/花粥 - 纸短情长.mp3?sign=a5cf71a1ce6cd62e9f4686e60d1d98be&t=1551347173',
+            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/huazhou.mp3?sign=8bcbbdca6a3e15f4f4ecab7c3e100f7c&t=1551350758',
             img: './images/music-cover.png',
             content: '你陪我步入蝉夏 越过城市喧嚣'
         },
@@ -29,6 +29,7 @@ function initMusic(globalData, setGlobalData) {
             content: '你的眼中有我的天空海洋 希望生活一直是我们爱的天堂'
         }
     ]
+    console.log('musicList', globalData.musicList)
     globalData.musicManager = wx.getBackgroundAudioManager()
     playFirstMusic(globalData)
     addMusicManagerActionListener(globalData, setGlobalData)
@@ -37,6 +38,10 @@ function initMusic(globalData, setGlobalData) {
 function playFirstMusic(globalData) {
     globalData.musicManager.src = globalData.musicList[globalData.currentMusicIndex].src
     globalData.musicManager.title = globalData.musicList[globalData.currentMusicIndex].name
+
+    globalData.musicManager.onError((err) => { // 真机调试
+        console.log(err)
+    })
 }
 function addMusicManagerActionListener(globalData, setGlobalData) {
     globalData.musicManager.onPlay(() => {

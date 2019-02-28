@@ -11,5 +11,6 @@
     "navigationStyle": "default",
     "backgroundColor": "#FFFFFF",
     "enablePullDownRefresh": false
-  }
+  },
+  "requiredBackgroundModes": ["audio"]
 }
