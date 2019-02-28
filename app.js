@@ -29,6 +29,6 @@ App({
     },
     onLaunch: function(){
         initCloud(this.globalData)
-        initMusic(this.globalData, this.setGlobalData)
+        initMusic(this.globalData, this.setGlobalData, this.addGlobalDataListener)
     }
 })

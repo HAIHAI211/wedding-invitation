@@ -13,7 +13,7 @@ function initCloud(globalData) {
     // globalData.musicCollection = db.collection(config.musicCollection)
 }
 
-function initMusic(globalData, setGlobalData) {
+function initMusic(globalData, setGlobalData, addGlobalDataListener) {
     globalData.currentMusicIndex = 0
     globalData.musicList = [
         {
@@ -33,6 +33,13 @@ function initMusic(globalData, setGlobalData) {
     globalData.musicManager = wx.getBackgroundAudioManager()
     playFirstMusic(globalData)
     addMusicManagerActionListener(globalData, setGlobalData)
+    addGlobalDataListener('playing', (v) => {
+        if (v) {
+            globalData.musicManager.play()
+        } else {
+            globalData.musicManager.pause()
+        }
+    })
 }
 
 function playFirstMusic(globalData) {
