@@ -1,6 +1,5 @@
 import {share} from '../../utils/share'
 const app = getApp()
-let mMgr = wx.getBackgroundAudioManager()
 Page({
 
   /**
@@ -78,11 +77,11 @@ Page({
    * */
   _updatePlayingStatus (nextStatus) {
       // 更新播放器状态
-      if (nextStatus) {
-        mMgr.play()
-      } else {
-        mMgr.pause()
-      }
+      // if (nextStatus) {
+      //   mMgr.play()
+      // } else {
+      //   mMgr.pause()
+      // }
 
       // 更新组件内的状态
       this.setData({

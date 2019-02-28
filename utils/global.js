@@ -43,12 +43,23 @@ function initMusic(globalData, setGlobalData, addGlobalDataListener) {
     playFirstMusic(globalData)
     addMusicManagerActionListener(globalData, setGlobalData)
     addGlobalDataListener('playing', (v) => {
+        console.log('music 这这这')
         if (v) {
-            globalData.musicManager.play()
+            if (!globalData.musicManager.src) {
+                playMusic(globalData)
+            } else {
+                globalData.musicManager.play()
+            }
+
         } else {
             globalData.musicManager.pause()
         }
     })
+}
+
+function playMusic(globalData) {
+    globalData.musicManager.src = globalData.musicList[globalData.currentMusicIndex].src
+    globalData.musicManager.title = globalData.musicList[globalData.currentMusicIndex].name
 }
 
 function playFirstMusic(globalData) {
