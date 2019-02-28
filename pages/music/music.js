@@ -1,18 +1,26 @@
-// pages/music/music.js
+import {share} from '../../utils/share'
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    playing: false,
+    img: '',
+    content: ''
+  },
 
+  onPlayTap () {
+    let nowStatus = this.data.playing
+    this._updatePlayingStatus(!nowStatus)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._init()
   },
 
   /**
@@ -60,7 +68,31 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    return share(res)
+  },
+  /**
+   * 更新播放状态
+   * */
+  _updatePlayingStatus (nextStatus) {
+      // 更新组件内的状态
+      this.setData({
+          playing: nextStatus
+      })
+      // 更新全局状态
+      app.setGlobalData('playing', nextStatus)
+  },
+  /**
+  * 初始化
+  * */
+  _init () {
+      this.setData({
+          playing: app.globalData.playing,
+          img: './images/music-cover.png',
+          content: '你陪我步入蝉夏 越过城市喧嚣'
+      })
+      wx.setNavigationBarTitle({
+          title: '花粥 《纸短情长》'
+      })
   }
 })

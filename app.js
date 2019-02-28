@@ -1,11 +1,9 @@
-import {config} from './config'
 import {initCloud} from './utils/global'
 App({
     globalData: { // 全局变量
         db: null,
         classicCollection: null,
         guestCollection: null,
-        musicSrc: '',
         playing: true
     },
     callbackMap: {},

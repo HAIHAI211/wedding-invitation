@@ -20,7 +20,7 @@
         index="{{classicArr[index].index}}"
         year="{{classicArr[index].year}}" month="{{classicArr[index].month}}"/>
         <!--<h-like class="like" bind:like="onLike"  like="{{likeStatus}}" count="{{likeCount}}"/>-->
-        <h-music-btn class="music-btn"/>
+        <h-music-btn class="music-btn" bind:tap="onMusicBtnTap"/>
     </view>
     <h-movie img="{{classicArr[index].image}}"
              content="{{classicArr[index].content}}"

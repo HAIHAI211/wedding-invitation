@@ -51,7 +51,11 @@ Page({
     console.log('test')
     setGlobalData('playing', false)
   },
-
+  onMusicBtnTap () {
+    wx.navigateTo({
+        url: '/pages/music/music'
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
