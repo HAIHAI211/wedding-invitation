@@ -23,7 +23,7 @@ Component({
   },
   attached () {
     addGlobalDataListener('playing', (v) => {
-        console.log('OnMusicPlayingUpdate', v)
+        console.log('music btn 组件监听到playing=>', v)
         this.setData({
             playing: v
         })

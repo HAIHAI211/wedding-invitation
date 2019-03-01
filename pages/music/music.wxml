@@ -1,13 +1,9 @@
 <view class="music-container">
-    <image src="{{img}}" class="cover-img {{playing?'rotation':''}}" />
+    <image src="{{musicList[currentMusicIndex].img}}" class="cover-img {{playing?'rotation':''}}" />
     <view class="control-bar">
-        <image src="./images/prev.png" class="btn"/>
+        <image src="./images/prev.png" class="btn" bind:tap="onPrevTap"/>
         <image src="{{playing? './images/pause.png':'./images/play.png'}}" class="btn mid-btn" bind:tap="onPlayTap"/>
-        <image src="./images/next.png" class="btn"/>
+        <image src="./images/next.png" class="btn" bind:tap="onNextTap"/>
     </view>
-    <text class="content">{{content}}</text>
-    <!--<image class="player-img" bind:tap = "onPlay"-->
-           <!--src="{{playing?playingUrl:waitingUrl}}" />-->
-    <!--<image class='tag' src="images/music@tag.png" />-->
-    <!--<text class="content">{{content}}</text>-->
+    <text class="content">{{musicList[currentMusicIndex].content}}</text>
 </view>

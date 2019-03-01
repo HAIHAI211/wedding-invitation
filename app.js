@@ -15,11 +15,12 @@ App({
         if (this.globalData[key] === value) {
             return
         }
+        let oldV = this.globalData[key]
         this.globalData[key] = value
         let callbackList = this.callbackMap[key]
         if (callbackList && callbackList.length) {
             for (let i = 0; i < callbackList.length; i++) {
-                callbackList[i](value)
+                callbackList[i](value, oldV)
             }
         }
     },

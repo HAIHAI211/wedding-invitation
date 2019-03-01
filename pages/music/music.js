@@ -1,5 +1,6 @@
 import {share} from '../../utils/share'
 const app = getApp()
+const globalData = app.globalData
 Page({
 
   /**
@@ -7,14 +8,8 @@ Page({
    */
   data: {
     playing: false,
-    src: '',
-    img: '',
-    content: ''
-  },
-
-  onPlayTap () {
-    let nowStatus = this.data.playing
-    this._updatePlayingStatus(!nowStatus)
+    musicList: globalData.musicList,
+    currentMusicIndex: globalData.currentMusicIndex
   },
 
   /**
@@ -72,36 +67,71 @@ Page({
   onShareAppMessage: function (res) {
     return share(res)
   },
+  onPlayTap () {
+    let nowStatus = this.data.playing
+    this._updatePlayingStatus(!nowStatus)
+  },
+  onPrevTap () {
+    console.log('onPrevTap')
+    let prevIndex = this.data.currentMusicIndex - 1
+    if (prevIndex <= -1) {
+        prevIndex = this.data.musicList.length - 1
+    }
+    this._updatePlayingIndex(prevIndex)
+  },
+  onNextTap () {
+    console.log('onNextTap')
+    let nextIndex = this.data.currentMusicIndex + 1
+    if (nextIndex >= this.data.musicList.length) {
+        nextIndex = 0
+    }
+    this._updatePlayingIndex(nextIndex)
+  },
   /**
    * 更新播放状态
    * */
   _updatePlayingStatus (nextStatus) {
-      // 更新播放器状态
-      // if (nextStatus) {
-      //   mMgr.play()
-      // } else {
-      //   mMgr.pause()
-      // }
 
-      // 更新组件内的状态
+      // 更新组件内的playing
       this.setData({
           playing: nextStatus
       })
-      // 更新全局状态
+      // 更新全局的playing
       app.setGlobalData('playing', nextStatus)
   },
+  /**
+  * 更新播放曲目
+  * */
+  _updatePlayingIndex (newIndex) {
+      // 更新组件内的index和playing
+      this.setData({
+          currentMusicIndex: newIndex,
+          playing: true // 没必要更新全局的playing，因为切换src会触发musicManager.onPlay()
+      })
+      wx.setNavigationBarTitle({
+          title: this.data.musicList[this.data.currentMusicIndex].name
+      })
+      // 更新全局的index
+      app.setGlobalData('currentMusicIndex', newIndex)
+  },
+
+
+
   /**
   * 初始化
   * */
   _init () {
+      console.log('初始化music.page', globalData)
+      // 根据globalData赋值data
       this.setData({
-          playing: app.globalData.playing,
-          src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/花粥 - 纸短情长.mp3?sign=a5cf71a1ce6cd62e9f4686e60d1d98be&t=1551347173',
-          img: './images/music-cover.png',
-          content: '你陪我步入蝉夏 越过城市喧嚣'
+          playing: globalData.playing,
+          musicList: globalData.musicList,
+          currentMusicIndex: globalData.currentMusicIndex
       })
+      // 根据globalData修改naviTitle
       wx.setNavigationBarTitle({
-          title: '花粥 《纸短情长》'
+          title: this.data.musicList[this.data.currentMusicIndex].name
       })
+
   }
 })
