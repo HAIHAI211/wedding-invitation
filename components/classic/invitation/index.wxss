@@ -23,10 +23,10 @@
     font-size: 15px;
 
 }
-.join-btn-5{
+.join-btn-4{
     background: lightblue;
 }
-.join-btn-6{
+.join-btn-5{
     background: lightcoral;
 }
 .info-container{

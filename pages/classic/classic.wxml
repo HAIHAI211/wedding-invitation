@@ -14,22 +14,36 @@
     <view class="header">
         <h-date
         class="date"
-        index="{{classicArr[index].index}}"
-        year="{{classicArr[index].year}}" month="{{classicArr[index].month}}"/>
-        <!--<h-like class="like" bind:like="onLike"  like="{{likeStatus}}" count="{{likeCount}}"/>-->
+        index="{{classicArr[index].index + 1}}"
+        year="{{classicArr[index].year}}"
+        month="{{classicArr[index].month}}"/>
         <h-music-btn class="music-btn" bind:tap="onMusicBtnTap"/>
     </view>
-    <h-movie img="{{classicArr[index].image}}"
-             content="{{classicArr[index].content}}"
-             index="{{classicArr[index].index}}"
-             wx:if="{{classicArr[index].type === 'photo'}}"/>
-    <h-invi content="{{classicArr[index].content}}"
-            time="{{classicArr[index].time}}"
-            nongTime="{{classicArr[index].nong_time}}"
-            hotel="{{classicArr[index].hotel}}"
-            hotelRoom="{{classicArr[index].hotel_room}}"
-            index="{{classicArr[index].index}}"
-            wx:if="{{classicArr[index].type === 'invitation'}}"/>
+    <h-movie
+            wx:for="{{photoArr}}"
+            wx:for-index="idx"
+            wx:key="{{item.index}}"
+            index="{{item.index}}"
+            img="{{item.image}}"
+            content="{{item.content}}"
+            hidden="{{item.index !== index}}"/>
+    <!--<h-invi content="{{classicArr[index].content}}"-->
+            <!--time="{{classicArr[index].time}}"-->
+            <!--nongTime="{{classicArr[index].nong_time}}"-->
+            <!--hotel="{{classicArr[index].hotel}}"-->
+            <!--hotelRoom="{{classicArr[index].hotel_room}}"-->
+            <!--index="{{classicArr[index].index}}"-->
+            <!--wx:if="{{classicArr[index].type === 'invitation'}}"/>-->
+    <h-invi
+            wx:for="{{inviArr}}"
+            wx:for-index="idx"
+            wx:key="{{item.index}}"
+            index="{{item.index}}"
+            content="{{item.content}}"
+            time="{{item.time}}"
+            nongTime="{{item.nong_time}}"
+            hotel="{{item.hotel}}"
+            hotelRoom="{{item.hotel_room}}" hidden="{{item.index !== index}}"/>
     <h-navi class="navi"
     title="{{classicArr[index].title}}"
     first="{{m1.isFirst(index)}}"

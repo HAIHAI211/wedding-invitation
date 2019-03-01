@@ -21,7 +21,9 @@ Page({
           content: '',
           index: 1
         }
-    ]
+    ],
+    photoArr: [],
+    inviArr: []
   },
   onNext: function () {
     let max = this.data.classicArr.length - 1
@@ -46,10 +48,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    classicCollection.get().then(res => {
+    classicCollection.orderBy('index', 'asc').get().then(res => {
       console.log(res.data)
+      let photoArr = []
+      let inviArr = []
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].type === 'photo') {
+          photoArr.push(res.data[i])
+        } else {
+          inviArr.push(res.data[i])
+        }
+      }
       this.setData({
-          classicArr: res.data
+          classicArr: res.data,
+          photoArr,
+          inviArr
       })
     })
   },
