@@ -1,0 +1,11 @@
+<wxs module="m1">
+    var getSrc = function (index) {
+        return './images/' + (index%2 + 1) + '.png'
+    }
+    module.exports.getSrc = getSrc
+</wxs>
+<view hidden="{{hidden}}" class="magic-container">
+    <view class="items-wrap rotation">
+        <image class="{{'item item-' + item}}" wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}}" wx:key="index" src="{{m1.getSrc(index)}}"/>
+    </view>
+</view>
