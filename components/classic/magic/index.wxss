@@ -2,6 +2,7 @@
     width: 750rpx;
     height: 800rpx;
     margin-top: 100rpx;
+    overflow: hidden;
 }
 .items-wrap{
     width: auto;
