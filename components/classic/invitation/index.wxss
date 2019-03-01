@@ -23,10 +23,10 @@
     font-size: 15px;
 
 }
-.join-btn-4{
+.join-btn-BAO_YING{
     background: lightblue;
 }
-.join-btn-5{
+.join-btn-CHENG_DU{
     background: lightcoral;
 }
 .info-container{
