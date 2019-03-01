@@ -9,6 +9,28 @@
   module.exports.isFirst = isFirst
   module.exports.isLast = isLast
 </wxs>
+<template name="photo">
+    <h-movie
+            index="{{item.index}}"
+            img="{{item.image}}"
+            content="{{item.content}}"
+            hidden="{{item.index !== index}}"/>
+</template>
+<template name="invitation">
+    <h-invi
+            index="{{item.index}}"
+            inType="{{item.invitation_type}}"
+            img="{{item.image}}"
+            content="{{item.content}}"
+            time="{{item.time}}"
+            nongTime="{{item.nong_time}}"
+            hotel="{{item.hotel}}"
+            hotelRoom="{{item.hotel_room}}"
+            hidden="{{item.index !== index}}"/>
+</template>
+<template name="magic">
+    <view hidden="{{item.index !== index}}">magic</view>
+</template>
 
 <view class="container">
     <view class="header">
@@ -19,31 +41,7 @@
         month="{{classicArr[index].month}}"/>
         <h-music-btn class="music-btn" bind:tap="onMusicBtnTap"/>
     </view>
-    <h-movie
-            wx:for="{{photoArr}}"
-            wx:for-index="idx"
-            wx:key="{{item.index}}"
-            index="{{item.index}}"
-            img="{{item.image}}"
-            content="{{item.content}}"
-            hidden="{{item.index !== index}}"/>
-    <!--<h-invi content="{{classicArr[index].content}}"-->
-            <!--time="{{classicArr[index].time}}"-->
-            <!--nongTime="{{classicArr[index].nong_time}}"-->
-            <!--hotel="{{classicArr[index].hotel}}"-->
-            <!--hotelRoom="{{classicArr[index].hotel_room}}"-->
-            <!--index="{{classicArr[index].index}}"-->
-            <!--wx:if="{{classicArr[index].type === 'invitation'}}"/>-->
-    <h-invi
-            wx:for="{{inviArr}}"
-            wx:for-index="idx"
-            wx:key="{{item.index}}"
-            index="{{item.index}}"
-            content="{{item.content}}"
-            time="{{item.time}}"
-            nongTime="{{item.nong_time}}"
-            hotel="{{item.hotel}}"
-            hotelRoom="{{item.hotel_room}}" hidden="{{item.index !== index}}"/>
+    <template wx:for="{{classicArr}}" wx:key="item.index" wx:for-index="idx" is="{{item.type}}" data="{{item,index}}"/>
     <h-navi class="navi"
     title="{{classicArr[index].title}}"
     first="{{m1.isFirst(index)}}"

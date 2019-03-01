@@ -9,7 +9,8 @@ Component({
         time: String,
         nongTime: String,
         hotel: String,
-        hotelRoom: String
+        hotelRoom: String,
+        inType: String
     },
 
     /**

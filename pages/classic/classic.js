@@ -21,9 +21,7 @@ Page({
           content: '',
           index: 1
         }
-    ],
-    photoArr: [],
-    inviArr: []
+    ]
   },
   onNext: function () {
     let max = this.data.classicArr.length - 1
@@ -50,19 +48,8 @@ Page({
   onLoad: function (options) {
     classicCollection.orderBy('index', 'asc').get().then(res => {
       console.log(res.data)
-      let photoArr = []
-      let inviArr = []
-      for (let i = 0; i < res.data.length; i++) {
-        if (res.data[i].type === 'photo') {
-          photoArr.push(res.data[i])
-        } else {
-          inviArr.push(res.data[i])
-        }
-      }
       this.setData({
-          classicArr: res.data,
-          photoArr,
-          inviArr
+          classicArr: res.data
       })
     })
   },
