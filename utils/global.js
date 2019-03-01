@@ -18,20 +18,20 @@ function initMusic(globalData, setGlobalData, addGlobalDataListener) {
     globalData.musicList = [
         {
             name: '花粥《纸短情长》',
-            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/huazhou.mp3?sign=8bcbbdca6a3e15f4f4ecab7c3e100f7c&t=1551350758',
-            img: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/images/music-cover/mc1.png?sign=0e61024302c41357550d31c436987b68&t=1551408020',
+            src: 'cloud://wedding-47b9fe.7765-wedding-47b9fe/music/huazhou.mp3',
+            img: 'cloud://wedding-47b9fe.7765-wedding-47b9fe/images/music-cover/music-cover-1.png',
             content: '你陪我步入蝉夏 越过城市喧嚣'
         },
         {
             name: 'Janieck Devy《Reality》',
-            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/reality.mp3?sign=696958c92f7a9a0b9f2253cffffbb462&t=1551364090',
-            img: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/images/music-cover/mc2.jpg?sign=c34b822c417f67e894afdd6b5016e709&t=1551404069',
+            src: 'cloud://wedding-47b9fe.7765-wedding-47b9fe/music/reality.mp3',
+            img: 'cloud://wedding-47b9fe.7765-wedding-47b9fe/images/music-cover/music-cover-2.jpg',
             content: 'Dancing in the moonlight, don\'t we have it all?'
         },
         {
             name: 'Sky Sailing《tennis elbow》',
-            src: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/music/tenniselbow.mp3?sign=97c0b642019c53c2342e6e2965559daf&t=1551364674',
-            img: 'https://7765-wedding-47b9fe-1258709118.tcb.qcloud.la/images/music-cover/mc3.jpg?sign=cccd3e2b051f0b314b8bba67712abb20&t=1551404085',
+            src: 'cloud://wedding-47b9fe.7765-wedding-47b9fe/music/tenniselbow.mp3',
+            img: 'cloud://wedding-47b9fe.7765-wedding-47b9fe/images/music-cover/music-cover-3.jpg',
             content: 'Close your eyes And I will twirl you around'
         }
     ]
