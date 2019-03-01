@@ -21,7 +21,7 @@
     background: brown;
     margin-left: -55rpx;
 }
-@-webkit-keyframes rotation {
+@-webkit-keyframes xmove {
     from {
         -webkit-transform: translateX(0);
     }
@@ -30,10 +30,10 @@
         -webkit-transform: translateX(-750rpx);
     }
 }
-.rotation {
+.xmove {
     /*-webkit-transform: rotate(360deg);*/
-    animation: rotation 12s linear infinite;
-    -moz-animation: rotation 12s linear infinite;
-    -webkit-animation: rotation 12s linear infinite;
-    -o-animation: rotation 12s linear infinite;
+    animation: xmove 15s linear infinite;
+    -moz-animation: xmove 15s linear infinite;
+    -webkit-animation: xmove 15s linear infinite;
+    -o-animation: xmove 15s linear infinite;
 }
