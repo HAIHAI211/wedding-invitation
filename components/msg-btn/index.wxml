@@ -1,4 +1,4 @@
-<view class="container">
-    <image src="./images/msg-btn4.png" bind:tap="onMsgBtnTap" class="msg-btn-img"/>
+<view class="container" bind:tap="onMsgBtnTap" >
+    <image src="./images/msg-btn4.png" class="msg-btn-img"/>
     <text class="msg-text">{{count}}</text>
 </view>

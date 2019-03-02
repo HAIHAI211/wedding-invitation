@@ -1,5 +1,5 @@
 .container{
-    padding: 9rpx;
+    padding: 13rpx 14rpx;
     display: flex;
 }
 .msg-btn-img{

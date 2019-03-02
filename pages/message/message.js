@@ -15,6 +15,7 @@ Page({
       content: '',
       skip: 0,
       msgs: [],
+      userCount: 0,
       loadAll: false
   },
 
@@ -36,7 +37,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this._reset()
+    this._fetchUserCount()
     this._fetchMsgsByRefresh()
   },
 
@@ -160,7 +161,8 @@ Page({
               time: db.serverDate()
           }
       }).then(res => {
-
+        this._fetchUserCount()
+        this._fetchMsgsByRefresh()
       })
   },
 
@@ -207,9 +209,7 @@ Page({
    * 刷新获取留言
    */
   _fetchMsgsByRefresh () {
-    this.setData({
-      skip: 0
-    })
+    this._reset()
     this._fetchMsgs(this.data.skip, 'refresh')
   },
 
@@ -228,10 +228,23 @@ Page({
    * */
   _reset () {
     this.setData({
+      userCount: 0,
       loading: false,
       msgs: [],
       loadAll: false,
       skip: 0
+    })
+  },
+
+  /**
+  * 从服务器获取用户人数
+  * */
+  _fetchUserCount () {
+    userCollection.count().then(res => {
+      console.log('userCount Res', res)
+      this.setData({
+        userCount: res.total
+      })
     })
   }
 })

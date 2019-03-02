@@ -1,6 +1,6 @@
 @import "../../../common/rotation.wxss";
 .container{
-    padding: 8rpx;
+    padding: 12rpx 14rpx;
 }
 .music-img-btn{
     width: 45rpx;

@@ -39,7 +39,7 @@
         index="{{classicArr[index].index + 1}}"
         year="{{classicArr[index].year}}"
         month="{{classicArr[index].month}}"/>
-        <h-msg-btn class="msg-btn"/>
+        <h-msg-btn class="msg-btn" count="{{msgCount}}"/>
         <h-music-btn class="music-btn" bind:tap="onMusicBtnTap"/>
     </view>
     <template wx:for="{{classicArr}}" wx:key="item.index" wx:for-index="idx" is="{{item.type}}" data="{{item,index}}"/>

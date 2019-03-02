@@ -1,13 +1,12 @@
 <wxs module="m1">
     var timeFormat = function (date) {
-        console.log('date', date)
         var d = getDate(date)
         return d.toLocaleString()
     }
     module.exports.timeFormat = timeFormat
 </wxs>
 <view class="message-container">
-    <view class="title">已有{{1}}人在此留言</view>
+    <view class="title" wx:if="{{userCount}}">已有{{userCount}}人在此留言</view>
     <button class="new-btn" bind:tap="onNewTap"><image src="./images/edit.png" class="icon"/>编写新留言</button>
     <view class="msg-item-container" wx:if="{{msgs.length}}">
       <h-msg-item

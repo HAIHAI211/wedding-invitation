@@ -1,6 +1,7 @@
 import {share} from '../../utils/share.js'
 const app = getApp();
 const classicCollection = app.globalData.classicCollection
+const messageCollection = app.globalData.messageCollection
 const setGlobalData = app.setGlobalData
 Page({
 
@@ -12,6 +13,7 @@ Page({
     likeCount: 0,
     likeStatus: false,
     index: 0,
+    msgCount: 0,
     classicArr: [
         {
           type: 'photo',
@@ -46,12 +48,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    classicCollection.orderBy('index', 'asc').get().then(res => {
-      console.log(res.data)
-      this.setData({
-          classicArr: res.data
-      })
-    })
+    this._fetchClassicList()
+    this._fetchMsgCount()
   },
 
   /**
@@ -65,7 +63,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._fetchMsgCount()
   },
 
   /**
@@ -101,5 +99,28 @@ Page({
    */
   onShareAppMessage: function (res) {
     return share(res)
+  },
+
+  /**
+   * 从服务器获取留言总数
+   * */
+  _fetchMsgCount () {
+    messageCollection.count().then(res => {
+      this.setData({
+        msgCount: res.total
+      })
+    })
+  },
+
+  /**
+  * 从服务器获取classicList
+  * */
+  _fetchClassicList () {
+    classicCollection.orderBy('index', 'asc').get().then(res => {
+      console.log(res.data)
+      this.setData({
+        classicArr: res.data
+      })
+    })
   }
 })
