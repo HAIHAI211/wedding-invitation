@@ -1,17 +1,17 @@
 <view class="message-container">
     <view class="title">已有{{1}}人在此留言</view>
     <button class="new-btn" bind:tap="onNewTap"><image src="./images/edit.png" class="icon"/>编写新留言</button>
-    <view class="msg-item-container" wx:if="{{!loading}}">
-      <h-msg-item 
+    <view class="msg-item-container" wx:if="{{!loading && msgs.length}}">
+      <h-msg-item
         class="msg-item"
-        wx:for="{{[msgs]}}" 
-        wx:key="{{index}}"  
-        avatar="{{item.avatar}}" 
-        name="{{item.name}}" 
-        time="{{item.time}}" 
+        wx:for="{{msgs}}"
+        wx:key="{{index}}"
+        avatar="{{item.avatar}}"
+        name="{{item.name}}"
+        time="{{item.time}}"
         content="{{item.content}}"/>
     </view>
-    <h-loading wx:else/> 
+    <h-loading wx:if="{{loading}}"/>
 </view>
 
 <van-dialog

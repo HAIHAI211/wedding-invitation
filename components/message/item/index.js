@@ -12,7 +12,10 @@ Component({
       type: String,
       value: '匿名'
     },
-    time: String,
+    time: {
+      type: Object,
+      value: {}
+    },
     content: {
       type: String,
       value: '祝百年好合!!'

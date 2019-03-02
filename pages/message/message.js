@@ -13,7 +13,9 @@ Page({
       show: false,
       name: '',
       content: '',
-      skip: 0
+      skip: 0,
+      msgs: [],
+      loadAll: false
   },
 
   /**
@@ -34,7 +36,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this._fetchMsgs(0)
+    this._reset()
+    this._fetchMsgsByRefresh()
   },
 
   /**
@@ -62,7 +65,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log('onReach')
+    this._fetchMsgsByLoadMore()
   },
 
   /**
@@ -138,6 +142,7 @@ Page({
               }
             }).then(res => {
               console.log('addUser云函数', res)
+              this._cacheSetServerHasUserInfo(true)
             })
           }
       }
@@ -177,9 +182,34 @@ Page({
 
   /**
    * 从服务器获取留言条数
+   * @param: action有两个值 refresh、loadmore
    */
-  _fetchMsgs (skip) {
-    messageCollection.skip(0).limit(config.pageSize).orderBy('time', 'desc').get()
+  _fetchMsgs (skip, action) {
+    if (this.data.loadAll) { return }
+    messageCollection.skip(skip).limit(config.pageSize).orderBy('time', 'desc').get().then(res => {
+      console.log(res)
+      // 更新msgs
+      if (action === 'refresh') {
+        this.setData({
+          msgs: res.data
+        })
+      } else {
+        let newMsgs = [...this.data.msgs, ...res.data]
+        this.setData({
+          msgs: newMsgs
+        })
+      }
+      // 更新skip
+      this.setData({
+        skip: this.data.skip + res.data.length
+      })
+      // 更新loadAll
+      if (res.data.length < config.pageSize) {
+        this.setData({
+          loadAll: true
+        })
+      }
+    })
   },
 
   /**
@@ -189,7 +219,7 @@ Page({
     this.setData({
       skip: 0
     })
-    this._fetchMsgs(this.data.skip)
+    this._fetchMsgs(this.data.skip, 'refresh')
   },
 
   /**
@@ -197,7 +227,19 @@ Page({
    */
   _fetchMsgsByLoadMore () {
     this.setData({
-        skip: this.data.skip 
+      skip: this.data.skip
+    })
+    this._fetchMsgs(this.data.skip, 'loadmore')
+  },
+
+  /**
+   * 重置数据
+   * */
+  _reset () {
+    this.setData({
+      msgs: [],
+      loadAll: false,
+      skip: 0
     })
   }
 })

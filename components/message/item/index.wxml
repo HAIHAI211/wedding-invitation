@@ -1,6 +1,9 @@
 <wxs module="m1">
     var timeformat=function(time){
-        return time.toString()
+        console.log(time)
+        let year = time.getFullYear()
+        let month = time.getMonth()
+        return year
     }
     module.exports.timeformat = timeformat
 </wxs>
