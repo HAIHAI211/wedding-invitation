@@ -1,3 +1,4 @@
+import {config} from '../../config.js'
 const app = getApp()
 const db = app.globalData.db
 const userCollection = app.globalData.userCollection
@@ -11,7 +12,8 @@ Page({
       loading: false,
       show: false,
       name: '',
-      content: ''
+      content: '',
+      skip: 0
   },
 
   /**
@@ -32,7 +34,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this._fetchMsgs()
+    this._fetchMsgs(0)
   },
 
   /**
@@ -176,7 +178,26 @@ Page({
   /**
    * 从服务器获取留言条数
    */
-  _fetchMsgs () {
-    messageCollection
+  _fetchMsgs (skip) {
+    messageCollection.skip(0).limit(config.pageSize).orderBy('time', 'desc').get()
+  },
+
+  /**
+   * 刷新获取留言
+   */
+  _fetchMsgsByRefresh () {
+    this.setData({
+      skip: 0
+    })
+    this._fetchMsgs(this.data.skip)
+  },
+
+  /**
+   * 加载更多获取留言
+   */
+  _fetchMsgsByLoadMore () {
+    this.setData({
+        skip: this.data.skip 
+    })
   }
 })

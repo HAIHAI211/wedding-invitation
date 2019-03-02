@@ -1,6 +1,6 @@
 <wxs module="m1">
     var timeformat=function(time){
-        return '昨天上午'
+        return time.toString()
     }
     module.exports.timeformat = timeformat
 </wxs>
