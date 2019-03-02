@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "msg-item": "/components/message/item/index"
+  },
+  "navigationBarTitleText": "留言板"
 }

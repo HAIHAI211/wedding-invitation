@@ -1,1 +1,25 @@
-/* pages/message/message.wxss */
+.message-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    font-weight: bold;
+    font-size: 35rpx;
+    margin-top: 80rpx;
+    margin-bottom: 40rpx;
+}
+
+.new-btn{
+    background: #A6ACBC;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30rpx;
+    display: flex;
+    align-items: center;
+}
+.icon{
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 8rpx;
+}
