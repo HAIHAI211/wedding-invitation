@@ -41,6 +41,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onInput (event) {
+      this.triggerEvent('input', event.detail.value)
+    }
   }
 })

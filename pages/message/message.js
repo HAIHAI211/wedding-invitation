@@ -1,5 +1,7 @@
 const app = getApp()
+const db = app.globalData.db
 const userCollection = app.globalData.userCollection
+const messageCollection = app.globalData.messageCollection
 Page({
 
   /**
@@ -7,7 +9,7 @@ Page({
    */
   data: {
       show: false,
-      username: '',
+      name: '',
       content: ''
   },
 
@@ -101,17 +103,58 @@ Page({
   onGetUserInfo (res) {
     // console.log(res.detail.userInfo)
     console.log('onGetUserInfo', res)
-    if (res.detail.userInfo) { // userInfo不为空，说明用户同意了权限申请
-      if (!this._cacheGetServerHasUserInfo()) { // 服务器没有获取过用户信息
-          userCollection.add({data: res.detail.userInfo}).then((res) => {
-            console.log('res', res)
-            this._cacheSetServerHasUserInfo(true)
-          })
-      } else {
-        console.log('服务器保存过该用户信息，无需重复发送')
-      }
-    }
+    this._serverSaveUserInfo(res.detail.userInfo)
+    this._serverSaveMsg(this.data.name, this.data.content, res.detail.userInfo)
   },
+  onNameInput (v) {
+    console.log('name', v.detail)
+    this.setData({
+      name: v.detail
+    })
+  },
+  onContentInput (v) {
+    console.log('content', v.detail)
+    this.setData({
+        content: v.detail
+    })
+  },
+
+  /**
+  * 保存用户信息到服务器
+  * */
+  _serverSaveUserInfo (userInfo) {
+      if (userInfo) { // userInfo不为空，说明用户同意了权限申请
+          if (!this._cacheGetServerHasUserInfo()) { // 服务器没有获取过用户信息
+              // userCollection.add({data: userInfo}).then((res) => {
+              //     console.log('res', res)
+              //     this._cacheSetServerHasUserInfo(true)
+              // })
+            wx.cloud.callFunction({
+              name: 'addUser',
+              data: {
+                user: userInfo
+              }
+            }).then(res => {
+              console.log('addUser云函数', res)
+            })
+          }
+      }
+  },
+
+  /**
+  * 保存留言到服务器
+  * */
+  _serverSaveMsg (name, msg, userInfo) {
+      messageCollection.add({
+          data: {
+              name,
+              msg,
+              avatar: userInfo ? userInfo.avatarUrl : '',
+              time: db.serverDate()
+          }
+      })
+  },
+
 
   /**
   * 缓存服务器是否获取到用户信息

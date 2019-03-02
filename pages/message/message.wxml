@@ -13,8 +13,8 @@
         bind:close="onClose"
         bind:getuserinfo="onGetUserInfo"
 >
-    <h-form-item label="您的姓名" placeholder="请输入您的姓名" must="{{true}}"/>
-    <h-form-item label="留言" placeholder="请输入您的留言" must="{{true}}"/>
+    <h-form-item label="您的姓名" placeholder="请输入您的姓名" must="{{true}}" bind:input="onNameInput"/>
+    <h-form-item label="留言" placeholder="请输入您的留言" must="{{true}}" bind:input="onContentInput"/>
     <!--<van-field-->
             <!--value="{{ username }}"-->
             <!--label="用户名"-->

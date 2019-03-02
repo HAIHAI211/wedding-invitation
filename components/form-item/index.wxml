@@ -11,6 +11,7 @@
            name="{{name}}"
            type="{{intype}}"
            placeholder="{{m1.getPh(must, placeholder)}}"
+           bindinput="onInput"
            wx:if="{{type==='input'}}"/>
     <radio-group class="radio-group"  name="{{name}}"  bind:change="radioChange" wx:elif="{{type==='radio'}}">
         <label class="radio" wx:for="{{items}}" wx:key="item.value">

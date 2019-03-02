@@ -6,6 +6,7 @@ App({
         guestCollection: null,
         musicCollection: null,
         userCollection: null,
+        messageCollection: null,
         musicManager: null,
         playing: false,
         musicList: [],
