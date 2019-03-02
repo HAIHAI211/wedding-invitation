@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      show: false,
+      username: '',
+      content: ''
   },
 
   /**
@@ -62,5 +64,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onNewTap () {
+    console.log('new')
+    this.setData({
+        show: true
+    })
+  },
+  onClose(event) {
+    if (event.detail === 'confirm') {
+      // 异步关闭弹窗
+      setTimeout(() => {
+          this.setData({
+              show: false
+          })
+      }, 1000)
+    } else {
+      this.setData({
+          show: false
+      })
+    }
   }
 })

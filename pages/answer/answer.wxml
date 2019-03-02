@@ -17,9 +17,6 @@
             <view class="label">赴宴人数:</view>
             <input class="value" placeholder-class="pholder" name="count" type="number" placeholder="(必填) 请输入赴宴人数" disabled="{{countInputDisabled}}" value="{{count}}"/>
         </view>
-        <!--<h-item type="input" name="name" label="您的姓名" placeholder="请输入您的姓名" must="{{true}}"/>-->
-        <!--<h-item type="radio" name="come" label="是否赴宴" items="{{items}}"/>-->
-        <!--<h-item type="input" name="count" label="赴宴人数" intype="number" placeholder="请输入赴宴人数" must="{{true}}" border="{{false}}"/>-->
         <textarea class="msg" name="msg" placeholder="轻触此处输入留言" placeholder-class="msg-ph"/>
         <button form-type="submit" class="btn submit-btn" loading="{{loading}}">提交回复</button>
     </form>

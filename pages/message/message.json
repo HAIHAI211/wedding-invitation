@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "msg-item": "/components/message/item/index"
+    "h-msg-item": "/components/message/item/index",
+    "h-form-item": "/components/form-item/index",
+    "van-dialog": "/components/vant-weapp/dist/dialog/index",
+    "van-field": "/components/vant-weapp/dist/field/index"
   },
   "navigationBarTitleText": "留言板",
   "navigationBarBackgroundColor": "#FAFBFF",
