@@ -1,5 +1,5 @@
 <view class="message-container">
     <view class="title">已有{{1}}人在此留言</view>
     <button class="new-btn"><image src="./images/edit.png" class="icon"/>编写新留言</button>
-    <msg-item wx:for="[1,2,3,4,5,6,7,8,9,10]"/>
+    <msg-item wx:for="[1,2,3,4,5,6,7,8,9,10]" class="msg-item"/>
 </view>

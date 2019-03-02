@@ -4,7 +4,19 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    avatar: {
+      type: String,
+      value: './images/avatar.png'
+    },
+    name: {
+      type: String,
+      value: '匿名'
+    },
+    time: String,
+    content: {
+      type: String,
+      value: '祝百年好合!!'
+    }
   },
 
   /**

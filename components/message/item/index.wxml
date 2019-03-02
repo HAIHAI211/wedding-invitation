@@ -1,2 +1,18 @@
-<!--components/message/item/index.wxml-->
-<text>components/message/item/index.wxml</text>
+<wxs module="m1">
+    var timeformat=function(time){
+        return '昨天上午'
+    }
+    module.exports.timeformat = timeformat
+</wxs>
+<view class="container">
+    <view class="header">
+        <image src="{{avatar}}" class="avatar"/>
+        <view class="wrap">
+            <text class="name">{{name}}</text>
+            <text class="time">{{m1.timeformat(time)}}</text>
+        </view>
+    </view>
+    <view class="content">
+        {{content}}
+    </view>
+</view>

@@ -1,1 +1,35 @@
-/* components/message/item/index.wxss */
+.container{
+    display: inline-flex;
+    flex-direction: column;
+    width: 600rpx;
+    border-radius: 10rpx;
+    background: #fff;
+    padding: 20rpx;
+    box-shadow: 0 1px 3px rgba(0,0,40,0.1), 0 2px 40px 1px rgba(0,0,60,0.2);
+}
+.header{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+.avatar{
+    width: 64rpx;
+    height: 64rpx;
+    margin-right: 10rpx;
+}
+.wrap{
+    display: flex;
+    flex-direction: column;
+}
+.name{
+    font-size: 26rpx;
+    margin-bottom: 6rpx;
+}
+.time{
+    font-size: 20rpx;
+    color: lightslategray;
+}
+.content{
+    font-size: 30rpx;
+}
+

@@ -2,5 +2,7 @@
   "usingComponents": {
     "msg-item": "/components/message/item/index"
   },
-  "navigationBarTitleText": "留言板"
+  "navigationBarTitleText": "留言板",
+  "navigationBarBackgroundColor": "#FAFBFF",
+  "backgroundColor": "#FAFBFF"
 }
