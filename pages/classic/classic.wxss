@@ -19,7 +19,7 @@
   margin-top: 4rpx;
 }
 .header .music-btn{
-  margin-top: 6rpx;
+  margin-top: 15rpx;
 }
 .header .msg-btn{
   margin-top: 10rpx;
