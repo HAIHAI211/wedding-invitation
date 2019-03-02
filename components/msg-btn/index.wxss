@@ -1,0 +1,16 @@
+.container{
+    padding: 9rpx;
+    display: flex;
+}
+.msg-btn-img{
+    width: 37rpx;
+    height: 37rpx;
+}
+.msg-text{
+    font-size:24rpx;
+    color: #bbbbbb;
+    line-height:24rpx;
+    position:relative;
+    bottom:10rpx;
+    left:6rpx;
+}

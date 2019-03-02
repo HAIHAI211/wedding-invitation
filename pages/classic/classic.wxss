@@ -19,11 +19,13 @@
   margin-top: 4rpx;
 }
 .header .music-btn{
-  margin-top: 7rpx;
+  margin-top: 6rpx;
 }
-/*.header .like{*/
-  /*margin-top: 6rpx;*/
-/*}*/
+.header .msg-btn{
+  margin-top: 10rpx;
+  position: relative;
+  right: -150rpx;
+}
 
 .navi{
     position: absolute;

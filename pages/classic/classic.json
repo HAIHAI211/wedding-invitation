@@ -5,6 +5,7 @@
     "h-magic": "/components/classic/magic/index",
     "h-date": "/components/date/index",
     "h-navi": "/components/navi/index",
-    "h-music-btn": "/components/music/btn/index"
+    "h-music-btn": "/components/music/btn/index",
+    "h-msg-btn": "/components/msg-btn/index"
   }
 }

@@ -2,7 +2,8 @@
   "pages": [
     "pages/classic/classic",
     "pages/answer/answer",
-    "pages/music/music"
+    "pages/music/music",
+    "pages/message/message"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
@@ -12,5 +13,7 @@
     "backgroundColor": "#FFFFFF",
     "enablePullDownRefresh": false
   },
-  "requiredBackgroundModes": ["audio"]
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }
