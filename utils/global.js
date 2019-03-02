@@ -10,6 +10,7 @@ function initCloud(globalData) {
     globalData.db = db
     globalData.classicCollection = db.collection(config.classicCollection)
     globalData.guestCollection = db.collection(config.guestCollection)
+    globalData.userCollection = db.collection(config.userCollection)
     // globalData.musicCollection = db.collection(config.musicCollection)
 }
 

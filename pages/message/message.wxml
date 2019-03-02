@@ -1,7 +1,7 @@
 <view class="message-container">
     <view class="title">已有{{1}}人在此留言</view>
     <button class="new-btn" bind:tap="onNewTap"><image src="./images/edit.png" class="icon"/>编写新留言</button>
-    <h-msg-item wx:for="[1,2,3,4,5,6,7,8,9,10]" class="msg-item"/>
+    <h-msg-item wx:for="[1,2,3,4,5,6,7,8,9,10]" wx:key="{{index}}"  class="msg-item"/>
 </view>
 
 <van-dialog
@@ -11,7 +11,7 @@
         show-cancel-button
         confirm-button-open-type="getUserInfo"
         bind:close="onClose"
-        bind:getuserinfo="getUserInfo"
+        bind:getuserinfo="onGetUserInfo"
 >
     <h-form-item label="您的姓名" placeholder="请输入您的姓名" must="{{true}}"/>
     <h-form-item label="留言" placeholder="请输入您的留言" must="{{true}}"/>

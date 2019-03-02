@@ -5,6 +5,7 @@ App({
         classicCollection: null,
         guestCollection: null,
         musicCollection: null,
+        userCollection: null,
         musicManager: null,
         playing: false,
         musicList: [],

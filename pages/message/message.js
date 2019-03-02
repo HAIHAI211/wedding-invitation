@@ -1,4 +1,5 @@
-// pages/message/message.js
+const app = getApp()
+const userCollection = app.globalData.userCollection
 Page({
 
   /**
@@ -65,14 +66,22 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+  /**
+  * 点击新增留言按钮，打开留言dialog
+  * */
   onNewTap () {
     console.log('new')
     this.setData({
         show: true
     })
   },
+
+  /**
+  * 当关闭留言dialog
+  * */
   onClose(event) {
-    if (event.detail === 'confirm') {
+    if (event.detail === 'confirm') { // 点击确认按钮
       // 异步关闭弹窗
       setTimeout(() => {
           this.setData({
@@ -84,5 +93,37 @@ Page({
           show: false
       })
     }
+  },
+
+  /**
+  * 当获取到用户信息
+  * */
+  onGetUserInfo (res) {
+    // console.log(res.detail.userInfo)
+    console.log('onGetUserInfo', res)
+    if (res.detail.userInfo) { // userInfo不为空，说明用户同意了权限申请
+      if (!this._cacheGetServerHasUserInfo()) { // 服务器没有获取过用户信息
+          userCollection.add({data: res.detail.userInfo}).then((res) => {
+            console.log('res', res)
+            this._cacheSetServerHasUserInfo(true)
+          })
+      } else {
+        console.log('服务器保存过该用户信息，无需重复发送')
+      }
+    }
+  },
+
+  /**
+  * 缓存服务器是否获取到用户信息
+  * */
+  _cacheSetServerHasUserInfo (status) {
+    wx.setStorageSync('ServerHasUserInfo', status)
+  },
+
+  /**
+  * 从缓存中获取ServerHasUserInfo
+  * */
+  _cacheGetServerHasUserInfo () {
+    return wx.getStorageSync('ServerHasUserInfo')
   }
 })
