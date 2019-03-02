@@ -13,8 +13,7 @@ Component({
       value: '匿名'
     },
     time: {
-      type: Object,
-      value: {}
+      type: String
     },
     content: {
       type: String,

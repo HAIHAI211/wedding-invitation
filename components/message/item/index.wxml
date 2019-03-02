@@ -1,18 +1,9 @@
-<wxs module="m1">
-    var timeformat=function(time){
-        console.log(time)
-        let year = time.getFullYear()
-        let month = time.getMonth()
-        return year
-    }
-    module.exports.timeformat = timeformat
-</wxs>
 <view class="container">
     <view class="header">
         <image src="{{avatar}}" class="avatar"/>
         <view class="wrap">
             <text class="name">{{name}}</text>
-            <text class="time">{{m1.timeformat(time)}}</text>
+            <text class="time">{{time}}</text>
         </view>
     </view>
     <view class="content">

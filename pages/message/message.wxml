@@ -1,14 +1,22 @@
+<wxs module="m1">
+    var timeFormat = function (date) {
+        console.log('date', date)
+        var d = getDate(date)
+        return d.toLocaleString()
+    }
+    module.exports.timeFormat = timeFormat
+</wxs>
 <view class="message-container">
     <view class="title">已有{{1}}人在此留言</view>
     <button class="new-btn" bind:tap="onNewTap"><image src="./images/edit.png" class="icon"/>编写新留言</button>
-    <view class="msg-item-container" wx:if="{{!loading && msgs.length}}">
+    <view class="msg-item-container" wx:if="{{msgs.length}}">
       <h-msg-item
         class="msg-item"
         wx:for="{{msgs}}"
         wx:key="{{index}}"
         avatar="{{item.avatar}}"
         name="{{item.name}}"
-        time="{{item.time}}"
+        time="{{m1.timeFormat(item.time)}}"
         content="{{item.content}}"/>
     </view>
     <h-loading wx:if="{{loading}}"/>

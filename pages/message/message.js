@@ -181,34 +181,25 @@ Page({
 
 
   /**
-   * 从服务器获取留言条数
+   * 从服务器获取留言
    * @param: action有两个值 refresh、loadmore
    */
   _fetchMsgs (skip, action) {
     if (this.data.loadAll) { return }
+    this.setData({
+      loading: true
+    })
     messageCollection.skip(skip).limit(config.pageSize).orderBy('time', 'desc').get().then(res => {
       console.log(res)
-      // 更新msgs
-      if (action === 'refresh') {
-        this.setData({
-          msgs: res.data
-        })
-      } else {
-        let newMsgs = [...this.data.msgs, ...res.data]
-        this.setData({
-          msgs: newMsgs
-        })
+      for (let i = 0; i < res.data.length; i++) {// 将Date类型转为long
+        res.data[i].time = res.data[i].time.getTime()
       }
-      // 更新skip
       this.setData({
-        skip: this.data.skip + res.data.length
+        msgs: action === 'refresh' ? res.data : [...this.data.msgs, ...res.data],
+        skip: this.data.skip + res.data.length,
+        loading: false,
+        loadAll: res.data.length < config.pageSize
       })
-      // 更新loadAll
-      if (res.data.length < config.pageSize) {
-        this.setData({
-          loadAll: true
-        })
-      }
     })
   },
 
@@ -237,6 +228,7 @@ Page({
    * */
   _reset () {
     this.setData({
+      loading: false,
       msgs: [],
       loadAll: false,
       skip: 0
