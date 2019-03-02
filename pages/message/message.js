@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      loading: false,
       show: false,
       name: '',
       content: ''
@@ -31,7 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this._fetchMsgs()
   },
 
   /**
@@ -101,7 +102,6 @@ Page({
   * 当获取到用户信息
   * */
   onGetUserInfo (res) {
-    // console.log(res.detail.userInfo)
     console.log('onGetUserInfo', res)
     this._serverSaveUserInfo(res.detail.userInfo)
     this._serverSaveMsg(this.data.name, this.data.content, res.detail.userInfo)
@@ -144,14 +144,16 @@ Page({
   /**
   * 保存留言到服务器
   * */
-  _serverSaveMsg (name, msg, userInfo) {
+  _serverSaveMsg (name, content, userInfo) {
       messageCollection.add({
           data: {
               name,
-              msg,
+              content,
               avatar: userInfo ? userInfo.avatarUrl : '',
               time: db.serverDate()
           }
+      }).then(res => {
+
       })
   },
 
@@ -168,5 +170,13 @@ Page({
   * */
   _cacheGetServerHasUserInfo () {
     return wx.getStorageSync('ServerHasUserInfo')
+  },
+
+
+  /**
+   * 从服务器获取留言条数
+   */
+  _fetchMsgs () {
+    messageCollection
   }
 })

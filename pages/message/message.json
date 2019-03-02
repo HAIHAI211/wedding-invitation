@@ -2,6 +2,7 @@
   "usingComponents": {
     "h-msg-item": "/components/message/item/index",
     "h-form-item": "/components/form-item/index",
+    "h-loading": "/components/loading/index",
     "van-dialog": "/components/vant-weapp/dist/dialog/index",
     "van-field": "/components/vant-weapp/dist/field/index"
   },
