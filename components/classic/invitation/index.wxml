@@ -6,7 +6,7 @@
 </wxs>
 <view class="classic-container" hidden="{{hidden}}">
     <image class="classic-img" src="{{img}}"/>
-    <button class="join-btn {{'join-btn-'+inType}}" bind:tap="onAnswer">回复</button>
+    <button class="join-btn {{'join-btn-'+inviType}}" bind:tap="onAnswer">回复</button>
     <view class="info-container">
         <view class="info address-info">
             <text class="hotel-name">{{hotel}}</text>

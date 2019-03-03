@@ -10,24 +10,29 @@
     height: 573rpx;
 }
 .join-btn{
+    padding: 0;
+    background: #313131;
+    color: #fbe88e;
     position: absolute;
     left: 0;
     right: 0;
     top: 255rpx;
-    width: 120rpx;
-    height: 120rpx;
+    width: 130rpx;
+    height: 130rpx;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 15px;
-
+    font-size: 34rpx;
+    letter-spacing: 4rpx;
+    box-shadow: 0 1px 3px rgba(0,0,40,0.1), 0 2px 40px 1px rgba(0,0,60,0.2);
 }
 .join-btn-BAO_YING{
-    background: lightblue;
+    /*background: lightblue;*/
+
 }
 .join-btn-CHENG_DU{
-    background: lightcoral;
+    /*background: lightcoral;*/
 }
 .info-container{
     position: absolute;
@@ -42,11 +47,11 @@
     align-items: center;
 }
 .address-info{
-    font-size: 13px;
+    font-size: 30rpx;
     color: #333;
 }
 .time-info{
-    font-size: 13px;
+    font-size: 30rpx;
     color: #333;
 }
 
