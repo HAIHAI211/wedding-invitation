@@ -1,13 +1,14 @@
 import {share} from '../../utils/share'
 const app = getApp()
 const globalData = app.globalData
+const addGlobalDataListener = app.addGlobalDataListener
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    playing: false,
+    playing: 'onStop',
     musicList: globalData.musicList,
     currentMusicIndex: globalData.currentMusicIndex
   },
@@ -69,7 +70,8 @@ Page({
   },
   onPlayTap () {
     let nowStatus = this.data.playing
-    this._updatePlayingStatus(!nowStatus)
+    let nextStatus = nowStatus === 'onPlay' ? 'onPause' : 'onPlay'
+    this._updatePlayingStatus(nextStatus)
   },
   onPrevTap () {
     console.log('onPrevTap')
@@ -106,7 +108,7 @@ Page({
       // 更新组件内的index和playing
       this.setData({
           currentMusicIndex: newIndex,
-          playing: true // 没必要更新全局的playing，因为切换src会触发musicManager.onPlay()
+          playing: 'onPlay' // 没必要更新全局的playing，因为切换src会触发musicManager.onPlay()
       })
       wx.setNavigationBarTitle({
           title: this.data.musicList[this.data.currentMusicIndex].name
@@ -121,17 +123,31 @@ Page({
   * 初始化
   * */
   _init () {
-      console.log('初始化music.page', globalData)
-      // 根据globalData赋值data
+    console.log('初始化music.page', globalData)
+    // 绑定playing、index全局监听事件
+    addGlobalDataListener('playing', newV => {
       this.setData({
-          playing: globalData.playing,
-          musicList: globalData.musicList,
-          currentMusicIndex: globalData.currentMusicIndex
+        playing: newV
       })
-      // 根据globalData修改naviTitle
+    })
+    addGlobalDataListener('currentMusicIndex', newV => {
+      this.setData({
+        currentMusicIndex: newV
+      })
       wx.setNavigationBarTitle({
-          title: this.data.musicList[this.data.currentMusicIndex].name
+        title: this.data.musicList[newV].name
       })
+    })
 
+    // 根据globalData赋值data
+    this.setData({
+      playing: globalData.playing,
+      musicList: globalData.musicList,
+      currentMusicIndex: globalData.currentMusicIndex
+    })
+    // 根据globalData修改naviTitle
+    wx.setNavigationBarTitle({
+      title: this.data.musicList[this.data.currentMusicIndex].name
+    })
   }
 })

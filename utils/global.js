@@ -1,5 +1,6 @@
 import {config} from "../config";
-
+// const app = getApp();
+// const globalData = app.globalData
 
 function initCloud(globalData) {
     wx.cloud.init({ // 初始化云服务
@@ -44,18 +45,37 @@ function initMusic(globalData, setGlobalData, addGlobalDataListener) {
     })
     playFirstMusic(globalData)
     addMusicManagerActionListener(globalData, setGlobalData)
-    addGlobalDataListener('playing', (v) => {
-        console.log('app.js监听到playing =>', v)
-        if (v) {
-            if (!globalData.musicManager.src) {
-                playMusic(globalData)
+    addGlobalDataListener('playing', (newV, oldV) => {
+        console.log(`app.js监听到playing ${oldV} => ${newV}`)
+        switch (newV) {
+          case 'onPlay':
+            if (oldV === 'onStop') {
+              playMusic(globalData)
             } else {
-                globalData.musicManager.play()
+              globalData.musicManager.play()
             }
-
-        } else {
+            break
+          case 'onPause':
             globalData.musicManager.pause()
+            break
+          case 'onStop':
+            globalData.musicManager.stop()
+            break
+          case 'onEnded':
+            let nowIndex = globalData.currentMusicIndex
+            let nextIndex = (nowIndex === globalData.musicList.length - 1) ? 0 : nowIndex + 1
+            setGlobalData('currentMusicIndex', nextIndex)
         }
+        // if (v) {
+        //     if (!globalData.musicManager.src) {
+        //         playMusic(globalData)
+        //     } else {
+        //         globalData.musicManager.play()
+        //     }
+        //
+        // } else {
+        //     globalData.musicManager.pause()
+        // }
     })
     addGlobalDataListener('currentMusicIndex', (v) => {
         console.log('app.js监听到currentMusicIndex =>', v)
@@ -69,27 +89,26 @@ function playMusic(globalData) {
 }
 
 function playFirstMusic(globalData) {
-    if (globalData.playing) {
-        globalData.musicManager.src = globalData.musicList[globalData.currentMusicIndex].src
-        globalData.musicManager.title = globalData.musicList[globalData.currentMusicIndex].name
+    if (globalData.playing === 'onPlay') {
+      playMusic(globalData)
     }
 }
 function addMusicManagerActionListener(globalData, setGlobalData) {
     globalData.musicManager.onPlay(() => {
-        console.log('musicManager onPlay')
-        setGlobalData('playing', true)
+        console.log('mg onPlay')
+        setGlobalData('playing', 'onPlay')
     })
     globalData.musicManager.onPause(() => {
-        console.log('musicManager onPause')
-        setGlobalData('playing', false)
+        console.log('mg onPause')
+        setGlobalData('playing', 'onPause')
     })
     globalData.musicManager.onStop(() => {
-        console.log('musicManager onStop')
-        setGlobalData('playing', false)
+        console.log('mg onStop')
+        setGlobalData('playing', 'onStop')
     }),
     globalData.musicManager.onEnded(()=>{
-        console.log('musicManager onEnded')
-        setGlobalData('playing', false)
+        console.log('mg onEnded')
+        setGlobalData('playing', 'onEnded')
     })
 }
 

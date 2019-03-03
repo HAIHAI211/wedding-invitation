@@ -29,7 +29,7 @@
             hidden="{{item.index !== index}}"/>
 </template>
 <template name="magic">
-    <h-magic hidden="{{item.index !== index}}"/>
+    <h-magic hidden="{{item.index !== index}}" content="{{item.content}}"/>
 </template>
 
 <view class="container">
