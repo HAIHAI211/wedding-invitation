@@ -18,7 +18,12 @@
             <input class="value" placeholder-class="pholder" name="count" type="number" placeholder="(必填) 请输入赴宴人数" disabled="{{countInputDisabled}}" value="{{count}}"/>
         </view>
         <textarea class="msg" name="msg" placeholder="轻触此处输入留言" placeholder-class="msg-ph"/>
-        <button form-type="submit" open-type="onGetUserInfo" class="btn submit-btn" loading="{{loading}}">提交回复</button>
+        <button
+                form-type="submit"
+                open-type="getUserInfo"
+                bindgetuserinfo="onGetUserInfo"
+                class="btn submit-btn"
+                loading="{{loading}}">提交回复</button>
     </form>
     <h-success content="{{successContent}}" wx:if="{{success}}" class="success"/>
     <button class="btn back-btn" wx:if="{{success}}" bind:tap="onBack">返回首页</button>

@@ -1,9 +1,10 @@
 import {share} from '../../utils/share.js'
+import {serverSaveUserInfo} from "../../models/user";
 import {serverSaveMsg} from '../../models/message'
+import {serverSaveGuest} from "../../models/guest"
+
 const app = getApp();
-const db = app.globalData.db
 const guestCollection = app.globalData.guestCollection
-const messageCollection = app.globalData.messageCollection
 Page({
 
   /**
@@ -14,38 +15,37 @@ Page({
     successContent: '回复已提交',
     loading: false,
     countInputDisabled: false,
-    flag: 'BAOYING', // 是宝应的还是成都
+    inviType: 'BAO_YING', // 是宝应的还是成都
     count: '',
     items: [
-        {
-          name: '赴宴',
-          value: 'go',
-          checked: true
-        },
-        {
-          name: '待定',
-          value: 'wait',
-          checked: false
-        },
-        {
-          name: '有事',
-          value: 'busy',
-          checked: false
-        }
+      {
+        name: '赴宴',
+        value: 'go',
+        checked: true
+      },
+      {
+        name: '待定',
+        value: 'wait',
+        checked: false
+      },
+      {
+        name: '有事',
+        value: 'busy',
+        checked: false
+      }
     ]
   },
   onRadioChange (e) {
     if (e.detail.value === 'busy') {
-        this.setData({
-            countInputDisabled: true,
-            count: 0
-        })
+      this.setData({
+        countInputDisabled: true,
+        count: 0
+      })
     } else {
-        this.setData({
-            countInputDisabled: false
-        })
+      this.setData({
+        countInputDisabled: false
+      })
     }
-
     console.log('radioChange', e)
   },
   onSubmit (e) {
@@ -53,21 +53,17 @@ Page({
     this.setData({
         loading: true
     })
-    guestCollection.add({
-        data: {
-            ...e.detail.value,
-            flag: this.data.flag
-        }
-    }).then(res => {
+    let {name, come, count} = e.detail.value
+    serverSaveGuest(name, come, count, this.data.inviType).then(res => {
       console.log(res)
       this.setData({
-          loading: false,
-          success: true
+        loading: false,
+        success: true
       })
     })
   },
   onGetUserInfo (res) {
-    this._serverSaveUserInfo(res.detail.userInfo)
+    serverSaveUserInfo(res.detail.userInfo)
     this._serverSaveMsg(this.data.name, this.data.content, res.detail.userInfo)
   },
   onBack () {
@@ -80,7 +76,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._reset(options.flag)
+    this._reset(options.inviType)
   },
 
   /**
@@ -131,23 +127,26 @@ Page({
   onShareAppMessage: function (res) {
       return share(res)
   },
-  _reset (flag) {
+  _reset (inviType) {
+      console.log('inviType', inviType)
       this.setData({
           success: false,
-          flag
+          inviType
       })
       wx.setNavigationBarTitle({
-          title: flag === 'BAO_YING' ? '宝应婚礼-回复' : '成都回门宴-回复'
+          title: inviType === 'BAO_YING' ? '宝应婚礼-回复' : '成都回门宴-回复'
       })
   },
+
   /**
    * 保存留言到服务器
    * */
-  _saveMsgToServer () {
-    messageCollection.add({
-      data: {
-
-      }
+  _serverSaveMsg (name, content, userInfo) {
+    let avatar = userInfo ? userInfo.avatarUrl : ''
+    serverSaveMsg(this.data.name, this.data.content, avatar).then(res => {
+      console.log('保存留言到服务器成功')
+      // this._fetchUserCount()
+      // this._fetchMsgsByRefresh()
     })
   }
 })

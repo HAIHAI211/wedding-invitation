@@ -6,11 +6,11 @@ Component({
      */
     behaviors: [classicBeh],
     properties: {
-        time: String,
-        nongTime: String,
-        hotel: String,
-        hotelRoom: String,
-        inType: String
+      time: String,
+      nongTime: String,
+      hotel: String,
+      hotelRoom: String,
+      inviType: String
     },
 
     /**
@@ -25,9 +25,8 @@ Component({
      */
     methods: {
         onAnswer () {
-            let flag = this.properties.index === 5 ? 'BAO_YING' : 'CHENG_DU'
             wx.navigateTo({
-                url: `/pages/answer/answer?flag=${flag}`
+                url: `/pages/answer/answer?inviType=${this.properties.inviType}`
             })
         }
     }

@@ -8,7 +8,7 @@ App({
         userCollection: null,
         messageCollection: null,
         musicManager: null,
-        playing: false,
+        playing: true,
         musicList: [],
         currentMusicIndex: 0
     },

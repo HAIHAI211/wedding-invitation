@@ -19,7 +19,7 @@
 <template name="invitation">
     <h-invi
             index="{{item.index}}"
-            inType="{{item.invitation_type}}"
+            inviType="{{item.invitation_type}}"
             img="{{item.image}}"
             content="{{item.content}}"
             time="{{item.time}}"
