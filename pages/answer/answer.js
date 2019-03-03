@@ -1,5 +1,5 @@
 import {share} from '../../utils/share.js'
-
+import {serverSaveMsg} from '../../models/message'
 const app = getApp();
 const db = app.globalData.db
 const guestCollection = app.globalData.guestCollection
@@ -65,6 +65,10 @@ Page({
           success: true
       })
     })
+  },
+  onGetUserInfo (res) {
+    this._serverSaveUserInfo(res.detail.userInfo)
+    this._serverSaveMsg(this.data.name, this.data.content, res.detail.userInfo)
   },
   onBack () {
       wx.navigateBack({

@@ -1,9 +1,6 @@
 import {config} from '../../config.js'
-import {serverSaveMsg} from '../../models/message'
-const app = getApp()
-const db = app.globalData.db
-const userCollection = app.globalData.userCollection
-const messageCollection = app.globalData.messageCollection
+import {serverSaveMsg, fetchMsgs} from '../../models/message'
+import {serverSaveUserInfo, fetchUserCount} from '../../models/user'
 Page({
 
   /**
@@ -82,7 +79,6 @@ Page({
   * 点击新增留言按钮，打开留言dialog
   * */
   onNewTap () {
-    console.log('new')
     this.setData({
         show: true
     })
@@ -111,39 +107,18 @@ Page({
   * */
   onGetUserInfo (res) {
     console.log('onGetUserInfo', res)
-    this._serverSaveUserInfo(res.detail.userInfo)
+    serverSaveUserInfo(res.detail.userInfo)
     this._serverSaveMsg(this.data.name, this.data.content, res.detail.userInfo)
   },
   onNameInput (v) {
-    console.log('name', v.detail)
     this.setData({
       name: v.detail
     })
   },
   onContentInput (v) {
-    console.log('content', v.detail)
     this.setData({
         content: v.detail
     })
-  },
-
-  /**
-  * 保存用户信息到服务器
-  * */
-  _serverSaveUserInfo (userInfo) {
-      if (userInfo) { // userInfo不为空，说明用户同意了权限申请
-          if (!this._cacheGetServerHasUserInfo()) { // 服务器没有获取过用户信息
-            wx.cloud.callFunction({
-              name: 'addUser',
-              data: {
-                user: userInfo
-              }
-            }).then(res => {
-              console.log('addUser云函数', res)
-              this._cacheSetServerHasUserInfo(true)
-            })
-          }
-      }
   },
 
   /**
@@ -182,7 +157,7 @@ Page({
     this.setData({
       loading: true
     })
-    messageCollection.skip(skip).limit(config.pageSize).orderBy('time', 'desc').get().then(res => {
+    fetchMsgs(skip, action).then(res => {
       console.log(res)
       for (let i = 0; i < res.data.length; i++) {// 将Date类型转为long
         res.data[i].time = res.data[i].time.getTime()
@@ -231,7 +206,7 @@ Page({
   * 从服务器获取用户人数
   * */
   _fetchUserCount () {
-    userCollection.count().then(res => {
+    fetchUserCount().then(res => {
       console.log('userCount Res', res)
       this.setData({
         userCount: res.total
