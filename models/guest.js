@@ -10,7 +10,7 @@ function serverSaveGuest(name, come, count, inviType) {
     data: {
       name,
       come,
-      count,
+      count: parseInt(count),
       invi_type: inviType
     }
   })

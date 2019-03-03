@@ -27,6 +27,6 @@
     </form>
     <h-success content="{{successContent}}" wx:if="{{success}}" class="success"/>
     <button class="btn back-btn" wx:if="{{success}}" bind:tap="onBack">返回首页</button>
-    <button class="btn url-btn" wx:if="{{success}}">查看留言页</button>
+    <button class="btn url-btn" wx:if="{{success}}" bind:tap="onMsgBtnTap">查看留言页</button>
 </view>
 

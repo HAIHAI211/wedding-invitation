@@ -16,7 +16,6 @@ Page({
     loading: false,
     countInputDisabled: false,
     inviType: 'BAO_YING', // 是宝应的还是成都
-    count: '',
     items: [
       {
         name: '赴宴',
@@ -33,7 +32,12 @@ Page({
         value: 'busy',
         checked: false
       }
-    ]
+    ],
+    name: '',
+    avatar: '',
+    msg: '',
+    come: '',
+    count: '',
   },
   onRadioChange (e) {
     if (e.detail.value === 'busy') {
@@ -49,26 +53,22 @@ Page({
     console.log('radioChange', e)
   },
   onSubmit (e) {
-    console.log(e)
-    this.setData({
-        loading: true
-    })
-    let {name, come, count} = e.detail.value
-    serverSaveGuest(name, come, count, this.data.inviType).then(res => {
-      console.log(res)
-      this.setData({
-        loading: false,
-        success: true
-      })
-    })
+    console.log('onSubmit')
+    this._serverSaveGuest(e.detail.value)
   },
   onGetUserInfo (res) {
+    console.log('onGetUserInfo')
     serverSaveUserInfo(res.detail.userInfo)
-    this._serverSaveMsg(this.data.name, this.data.content, res.detail.userInfo)
+    this._serverSaveMsg(res.detail.userInfo)
   },
   onBack () {
       wx.navigateBack({
           delta: 1
+      })
+  },
+  onMsgBtnTap () {
+      wx.redirectTo({
+        url: '/pages/message/message'
       })
   },
 
@@ -141,12 +141,26 @@ Page({
   /**
    * 保存留言到服务器
    * */
-  _serverSaveMsg (name, content, userInfo) {
+  _serverSaveMsg (userInfo) {
     let avatar = userInfo ? userInfo.avatarUrl : ''
-    serverSaveMsg(this.data.name, this.data.content, avatar).then(res => {
+    serverSaveMsg(this.data.name, this.data.msg, avatar).then(res => {
       console.log('保存留言到服务器成功')
-      // this._fetchUserCount()
-      // this._fetchMsgsByRefresh()
+    })
+  },
+  /**
+   * 保存赴宴信息到服务器
+   * */
+  _serverSaveGuest (values) {
+    this.setData({
+      ...values,
+      loading: true
+    })
+    serverSaveGuest(this.data.name, this.data.come, this.data.count, this.data.inviType).then(res => {
+      console.log(res)
+      this.setData({
+        loading: false,
+        success: true
+      })
     })
   }
 })
