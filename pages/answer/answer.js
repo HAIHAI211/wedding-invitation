@@ -3,6 +3,7 @@ import {share} from '../../utils/share.js'
 const app = getApp();
 const db = app.globalData.db
 const guestCollection = app.globalData.guestCollection
+const messageCollection = app.globalData.messageCollection
 Page({
 
   /**
@@ -33,7 +34,7 @@ Page({
         }
     ]
   },
-  radioChange (e) {
+  onRadioChange (e) {
     if (e.detail.value === 'busy') {
         this.setData({
             countInputDisabled: true,
@@ -75,7 +76,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this._rocoverStatus(options.flag)
+    this._reset(options.flag)
   },
 
   /**
@@ -126,7 +127,7 @@ Page({
   onShareAppMessage: function (res) {
       return share(res)
   },
-  _rocoverStatus (flag) {
+  _reset (flag) {
       this.setData({
           success: false,
           flag
@@ -134,5 +135,15 @@ Page({
       wx.setNavigationBarTitle({
           title: flag === 'BAO_YING' ? '宝应婚礼-回复' : '成都回门宴-回复'
       })
+  },
+  /**
+   * 保存留言到服务器
+   * */
+  _saveMsgToServer () {
+    messageCollection.add({
+      data: {
+
+      }
+    })
   }
 })

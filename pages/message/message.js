@@ -1,4 +1,5 @@
 import {config} from '../../config.js'
+import {serverSaveMsg} from '../../models/message'
 const app = getApp()
 const db = app.globalData.db
 const userCollection = app.globalData.userCollection
@@ -132,10 +133,6 @@ Page({
   _serverSaveUserInfo (userInfo) {
       if (userInfo) { // userInfo不为空，说明用户同意了权限申请
           if (!this._cacheGetServerHasUserInfo()) { // 服务器没有获取过用户信息
-              // userCollection.add({data: userInfo}).then((res) => {
-              //     console.log('res', res)
-              //     this._cacheSetServerHasUserInfo(true)
-              // })
             wx.cloud.callFunction({
               name: 'addUser',
               data: {
@@ -153,19 +150,13 @@ Page({
   * 保存留言到服务器
   * */
   _serverSaveMsg (name, content, userInfo) {
-      messageCollection.add({
-          data: {
-              name,
-              content,
-              avatar: userInfo ? userInfo.avatarUrl : '',
-              time: db.serverDate()
-          }
-      }).then(res => {
-        this._fetchUserCount()
-        this._fetchMsgsByRefresh()
-      })
+    let avatar = userInfo ? userInfo.avatarUrl : ''
+    serverSaveMsg(this.data.name, this.data.content, avatar).then(res => {
+      console.log('保存留言到服务器成功')
+      this._fetchUserCount()
+      this._fetchMsgsByRefresh()
+    })
   },
-
 
   /**
   * 缓存服务器是否获取到用户信息

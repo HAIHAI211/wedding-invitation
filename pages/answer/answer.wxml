@@ -6,7 +6,7 @@
         </view>
         <view class="form-item-container border">
             <view class="label">是否赴宴:</view>
-            <radio-group class="radio-group"  name="come"  bind:change="radioChange">
+            <radio-group class="radio-group"  name="come"  bind:change="onRadioChange">
                 <label class="radio" wx:for="{{items}}" wx:key="item.value">
                     <radio value="{{item.value}}" checked="{{item.checked}}" color="#e0e0e0"/>
                     {{item.name}}
