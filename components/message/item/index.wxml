@@ -1,6 +1,6 @@
 <view class="container">
     <view class="header">
-        <image src="{{avatar}}" class="avatar"/>
+        <image src="{{avatar ? avatar : './images/avatar.png'}}" class="avatar"/>
         <view class="wrap">
             <text class="name">{{name}}</text>
             <text class="time">{{time}}</text>
