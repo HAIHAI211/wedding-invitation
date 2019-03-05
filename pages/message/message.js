@@ -88,6 +88,7 @@ Page({
   * 当关闭留言dialog
   * */
   onClose(event) {
+    console.log('onClose')
     if (event.detail === 'confirm') { // 点击确认按钮
       // 异步关闭弹窗
       setTimeout(() => {

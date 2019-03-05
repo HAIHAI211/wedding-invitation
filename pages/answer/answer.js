@@ -37,7 +37,7 @@ Page({
     avatar: '',
     msg: '',
     come: '',
-    count: '',
+    count: ''
   },
   onRadioChange (e) {
     if (e.detail.value === 'busy') {
