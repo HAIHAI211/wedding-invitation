@@ -1,10 +1,12 @@
 <view class="music-container">
+    <image src="./images/img.png" class="cover-img {{playing === 'onPlay' ? 'rotation':''}}" hidden="{{imgLoaded}}"/>
     <image
             src="{{item.img}}"
             class="cover-img {{playing === 'onPlay' ? 'rotation':''}}"
             wx:for="{{musicList}}"
             wx:key="{{index}}"
-            hidden="{{index!==currentMusicIndex}}"/>
+            bindload="onImgLoad"
+            hidden="{{index!==currentMusicIndex || !imgLoaded}}"/>
     <view class="control-bar">
         <image src="./images/prev.png" class="btn" bind:tap="onPrevTap"/>
         <image src="{{playing === 'onPlay' ? './images/pause.png':'./images/play.png'}}" class="btn mid-btn" bind:tap="onPlayTap"/>

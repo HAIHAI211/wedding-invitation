@@ -10,7 +10,8 @@ Page({
   data: {
     playing: 'onStop',
     musicList: globalData.musicList,
-    currentMusicIndex: globalData.currentMusicIndex
+    currentMusicIndex: globalData.currentMusicIndex,
+    imgLoaded: false
   },
 
   /**
@@ -67,6 +68,16 @@ Page({
    */
   onShareAppMessage: function (res) {
     return share(res)
+  },
+
+  /**
+   *当留声机碟封面图加载完成时
+   * */
+  onImgLoad () {
+    console.log('img load')
+    this.setData({
+      imgLoaded: true
+    })
   },
   onPlayTap () {
     let nowStatus = this.data.playing
@@ -141,6 +152,7 @@ Page({
 
     // 根据globalData赋值data
     this.setData({
+      imgLoaded: false,
       playing: globalData.playing,
       musicList: globalData.musicList,
       currentMusicIndex: globalData.currentMusicIndex

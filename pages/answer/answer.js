@@ -142,6 +142,7 @@ Page({
    * 保存留言到服务器
    * */
   _serverSaveMsg (userInfo) {
+    if (!this.data.msg) {return}
     let avatar = userInfo ? userInfo.avatarUrl : ''
     serverSaveMsg(this.data.name, this.data.msg, avatar).then(res => {
       console.log('保存留言到服务器成功')

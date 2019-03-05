@@ -109,7 +109,7 @@ Page({
   onGetUserInfo (res) {
     console.log('onGetUserInfo', res)
     serverSaveUserInfo(res.detail.userInfo)
-    this._serverSaveMsg(this.data.name, this.data.content, res.detail.userInfo)
+    this._serverSaveMsg(res.detail.userInfo)
   },
   onNameInput (v) {
     this.setData({
@@ -125,7 +125,8 @@ Page({
   /**
   * 保存留言到服务器
   * */
-  _serverSaveMsg (name, content, userInfo) {
+  _serverSaveMsg (userInfo) {
+    if (!this.data.content) {return}
     let avatar = userInfo ? userInfo.avatarUrl : ''
     serverSaveMsg(this.data.name, this.data.content, avatar).then(res => {
       console.log('保存留言到服务器成功')
