@@ -156,6 +156,7 @@ Page({
       loading: true
     })
     serverSaveGuest(this.data.name, this.data.come, this.data.count, this.data.inviType).then(res => {
+      console.log('保存赴宴信息成功')
       console.log(res)
       this.setData({
         loading: false,

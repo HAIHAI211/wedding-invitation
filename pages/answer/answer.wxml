@@ -1,5 +1,6 @@
 <view class="answer-container">
-    <form bind:submit="onSubmit" wx:if="{{!success}}">
+    <!--这里会存在bug，因为获取用户信息的button有可能会在getUserInfo前就消失了-->
+    <form bind:submit="onSubmit" hidden="{{success}}">
         <view class="form-item-container border">
             <view class="label">您的姓名:</view>
             <input class="value" placeholder-class="pholder" name="name" placeholder="(必填) 请输入您的姓名"/>
@@ -25,7 +26,7 @@
                 class="btn submit-btn"
                 loading="{{loading}}">提交回复</button>
     </form>
-    <h-success content="{{successContent}}" wx:if="{{success}}" class="success"/>
+    <h-success content="{{successContent}}" hidden="{{!success}}" class="success"/>
     <button class="btn back-btn" wx:if="{{success}}" bind:tap="onBack">返回首页</button>
     <button class="btn url-btn" wx:if="{{success}}" bind:tap="onMsgBtnTap">查看留言页</button>
 </view>
